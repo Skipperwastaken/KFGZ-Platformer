@@ -9,7 +9,7 @@
 * Scene
 
    Character  
-   movement (jump, slide, attack)
+   movement (jump, slide, attack, use item)
    
    Opponents  
    different types

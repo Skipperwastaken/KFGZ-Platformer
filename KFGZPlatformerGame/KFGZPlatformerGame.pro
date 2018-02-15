@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui\
+         multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,13 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    game.cpp
 
 HEADERS += \
-        mainwindow.h
+    game.h
 
-FORMS += \
-        mainwindow.ui
+FORMS +=
 
 CONFIG += mobility
 MOBILITY = 
