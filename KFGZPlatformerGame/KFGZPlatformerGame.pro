@@ -27,11 +27,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     game.cpp \
-    character.cpp
+    character.cpp \
+    terrain.cpp
 
 HEADERS += \
     game.h \
-    character.h
+    character.h \
+    terrain.h
 
 FORMS +=
 
