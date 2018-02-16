@@ -22,3 +22,4 @@
    blocks coming after eachother randomly
 * Count score, money
 ### Shop
+![shop](readmeIMG/shop.jpg)   
