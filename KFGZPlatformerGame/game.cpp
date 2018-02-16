@@ -15,7 +15,7 @@ Game::Game(QWidget *parent)
 
     // scene, ez a palya
     scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,screenWidth,screenHeight-2);
+    scene->setSceneRect(0,0,screenWidth-2,screenHeight-2);
 
     //view, ez amit a jatekos lat
     setScene(scene);
