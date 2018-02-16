@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QWidget>
 #include <QGraphicsScene>
+#include "character.h"
 
 class Game: public QGraphicsView{
     Q_OBJECT
@@ -13,6 +14,8 @@ public:
     QGraphicsScene * scene;
 
     int screenHeight, screenWidth;
+
+    Character *player;
 };
 
 #endif // GAME_H

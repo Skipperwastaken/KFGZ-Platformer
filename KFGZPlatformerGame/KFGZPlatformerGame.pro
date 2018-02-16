@@ -26,13 +26,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    game.cpp
+    game.cpp \
+    character.cpp
 
 HEADERS += \
-    game.h
+    game.h \
+    character.h
 
 FORMS +=
 
 CONFIG += mobility
 MOBILITY = 
+
+RESOURCES += \
+    res.qrc
 

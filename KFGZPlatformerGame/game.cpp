@@ -20,6 +20,13 @@ Game::Game(QWidget *parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(screenWidth,screenHeight);
 
+    // jatekos letrehozasa
+    player = new Character();
+    player->setPos(screenWidth/2,screenHeight/2);  //itt majd lesz rendes helye is
+    player->setFlag(QGraphicsItem::ItemIsFocusable);
+    player->setFocus();
+    scene->addItem(player);
+
     //ha minden elokeszulet kesz, megnyitjuk az ablakot
-    show();
+    showMaximized();
 }
