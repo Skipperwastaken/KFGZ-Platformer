@@ -7,6 +7,8 @@
 #include <QGraphicsLineItem>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QList>
+
 
 class Character:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
@@ -16,7 +18,7 @@ public:
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent * event);
     QTimer *moveTimer;
-    int yVelocity=-5;
+    double yVelocity=-5;
 public slots:
     void move();
 };

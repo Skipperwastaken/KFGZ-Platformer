@@ -1,4 +1,6 @@
 #include "character.h"
+#include "terrain.h"
+#include <QDebug>
 
 Character::Character(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
 {
@@ -19,7 +21,10 @@ Character::Character(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
 
 void Character::keyPressEvent(QKeyEvent *event)
 {
-
+    if (event->key() == Qt::Key_W){
+        yVelocity=3;
+        qDebug() << "Jump";
+    }
 }
 
 void Character::keyReleaseEvent(QKeyEvent *event)
@@ -29,5 +34,19 @@ void Character::keyReleaseEvent(QKeyEvent *event)
 
 void Character::move()
 {
-    //setPos(x(), y()-yVelocity);
+    //reset falling speed
+    yVelocity -= 0.02;
+
+    //foldreerkezes
+    QList<QGraphicsItem *> bottomCollidingItems = bottom->collidingItems();
+    for (int i = 0, n = bottomCollidingItems.size(); i < n; ++i)
+    {
+        if (typeid(*(bottomCollidingItems[i])) == typeid(Terrain)){ //ha érintkezik a földdel, akkor nem eshet
+            yVelocity = (yVelocity < 0 ? 0 : yVelocity);
+        }
+    }
+
+    //ha erintkezik a folddel, akkor a yvelocity 0, ha esik, akkor negativ, ha ugrik akkr pozitiv
+    setPos(x(), y()-yVelocity);
+
 }
