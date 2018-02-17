@@ -16,33 +16,47 @@ Character::Character(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
     //timer, annyi idokozonkent mozog a karakter
     moveTimer=new QTimer(this);
     connect(moveTimer,SIGNAL(timeout()),this,SLOT(move()));
-    moveTimer->start(10);
+    moveTimer->start(1);
 }
 
 void Character::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_W){
-        yVelocity=3;
+        if(!event->isAutoRepeat() && jumpsLeft>0)
+        {
+            yVelocity=0.4;
+            jumpsLeft--;
+        }
+        jumping=true;
         qDebug() << "Jump";
+    }
+    if (event->key() == Qt::Key_A){
+        //jumping=true;
+        qDebug() << "Left";
     }
 }
 
 void Character::keyReleaseEvent(QKeyEvent *event)
 {
-
+    if (event->key() == Qt::Key_W){
+        jumping=false;
+        qDebug() << "Jump stopped";
+    }
 }
 
 void Character::move()
 {
-    //reset falling speed
-    yVelocity -= 0.02;
+    //gravitacio
+    yVelocity -= (jumping && yVelocity>0 ? 0.0005 : 0.0010);
 
     //foldreerkezes
     QList<QGraphicsItem *> bottomCollidingItems = bottom->collidingItems();
     for (int i = 0, n = bottomCollidingItems.size(); i < n; ++i)
     {
-        if (typeid(*(bottomCollidingItems[i])) == typeid(Terrain)){ //ha érintkezik a földdel, akkor nem eshet
+        if (typeid(*(bottomCollidingItems[i])) == typeid(Terrain)) //ha érintkezik a földdel, akkor nem eshet
+        {
             yVelocity = (yVelocity < 0 ? 0 : yVelocity);
+            jumpsLeft =1; //ha leer a foldre akkor ugorhat ujra
         }
     }
 

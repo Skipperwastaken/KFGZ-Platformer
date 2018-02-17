@@ -19,6 +19,8 @@ public:
     void keyReleaseEvent(QKeyEvent * event);
     QTimer *moveTimer;
     double yVelocity=-5;
+    bool jumping=false; //levan-e nyomva az ugras, lehetne magassabbat ugrani, ha hosszan van lenyomva
+    int jumpsLeft=1; //hany ugras van vissza, majd lehet double jumpot is belerakni, plusz kell programozas szempontbol is
 public slots:
     void move();
 };
