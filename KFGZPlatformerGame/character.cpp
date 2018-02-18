@@ -113,9 +113,9 @@ void Character::move()
     }
     //oldalra mozgas
     if(goingRight && !wallRight)
-        setPos(x()+0.4, y());
+        setPos(x()+(yVelocity == 0 ? 0.4 : 0.3), y());
     if(goingLeft && !wallLeft)
-        setPos(x()-0.4, y());
+        setPos(x()-(yVelocity == 0 ? 0.4 : 0.3), y());
     //ha erintkezik a folddel, akkor a yvelocity 0, ha esik, akkor negativ, ha ugrik akkr pozitiv
     setPos(x(), y()-yVelocity);
 
