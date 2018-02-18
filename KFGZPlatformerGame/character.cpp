@@ -2,10 +2,12 @@
 #include "terrain.h"
 #include <QDebug>
 
-Character::Character(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
+Character::Character(QGraphicsItem *parent): QGraphicsRectItem(parent)
 {
     // karakter kepe, kesobb majd animalni kell
-    setPixmap(QPixmap(":/images/images/character.png").scaled(QSize(100, 200)));
+    setRect(0, 0, 100, 200);
+    setPen(QPen(QColor(0,0,0,0)));
+    model=new QGraphicsPixmapItem(QPixmap(":/images/images/character.png").scaled(QSize(100, 200)), this);
 
     //QLine itemek, ezekkel tud erintkezni a kornyezettel a karakter
     top = new QGraphicsLineItem(4, 1, 96, 1, this);
@@ -35,7 +37,7 @@ void Character::keyPressEvent(QKeyEvent *event)
     if (event->key() == Qt::Key_W){
         if(!event->isAutoRepeat() && jumpsLeft>0)
         {
-            yVelocity=0.4;
+            yVelocity=0.6;
             jumpsLeft--;
         }
         jumping=true;
@@ -77,25 +79,8 @@ void Character::keyReleaseEvent(QKeyEvent *event)
 
 void Character::move()
 {
-    //sliding, ez van eloszor, mert ez befolyasolja a hitboxot, ami minden mas mozgast
-    /*slidingTime++;
-    if(slidingTime>1000)
-    {
-        //abbahagyja a slideot
-        qDebug() << "Sliding time over";
-    }
-    if(!sliding && slidingTime>500 && slidingTime<1000)
-    {
-        slidingTime=1000;
-        qDebug() << "Sliding stopped before 1 sec";
-    }
-    if(slidingTime>1500)
-    {
-        slidingTime=0;
-        qDebug() << "Sliding time reset";
-    } */
     //gravitacio
-    yVelocity -= (jumping && yVelocity>0 ? 0.0005 : 0.0010);
+    yVelocity -= (jumping && yVelocity>0 ? 0.0008 : 0.0014);
 
     //fal erzekeles reset
     wallLeft=false;

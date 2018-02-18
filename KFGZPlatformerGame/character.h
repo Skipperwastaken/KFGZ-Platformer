@@ -1,6 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include <QGraphicsRectItem>
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsItem>
@@ -11,10 +12,11 @@
 #include <QPen>
 
 
-class Character:public QObject, public QGraphicsPixmapItem{
+class Character:public QObject, public QGraphicsRectItem{
     Q_OBJECT
 public:
     Character(QGraphicsItem * parent=0);
+    QGraphicsPixmapItem *model;
     QGraphicsLineItem *top, *right, *bottom, *left;
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent * event);
