@@ -8,7 +8,7 @@ Character::Character(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
     setPixmap(QPixmap(":/images/images/character.png").scaled(QSize(100, 200)));
 
     //QLine itemek, ezekkel tud erintkezni a kornyezettel a karakter
-    top = new QGraphicsLineItem(3, 1, 96, 1, this);
+    top = new QGraphicsLineItem(4, 1, 96, 1, this);
     top->setPen(QPen(Qt::cyan, 4));
     right = new QGraphicsLineItem(99, 4, 99, 196, this);
     right->setPen(QPen(Qt::blue, 4));
@@ -116,7 +116,7 @@ void Character::move()
             if(!slidingTimer->isActive() && !slidingCD->isActive() && sliding)
             {
                 //TODO: elkezd csuszni
-                top->setLine(3, 101, 96, 101);
+                top->setLine(4, 101, 96, 101);
                 right->setLine(99, 104, 99, 196);
                 left->setLine(1, 104, 1, 196);
 
@@ -185,13 +185,13 @@ void Character::move()
 void Character::stopSliding()
 {
     //TODO: stop sliding
-    top->setLine(3, 1, 96, 1);
+    top->setLine(4, 1, 96, 1);
     QList<QGraphicsItem *> topCollidingItems = top->collidingItems();
     for (int i = 0, n = topCollidingItems.size(); i < n; ++i)
     {
         if (typeid(*(topCollidingItems[i])) == typeid(Terrain))
         {
-            top->setLine(3, 101, 96, 101);
+            top->setLine(4, 101, 96, 101);
             slidingTimer->start(10);
             return;
         }
