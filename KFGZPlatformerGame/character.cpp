@@ -21,6 +21,13 @@ Character::Character(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
     moveTimer=new QTimer(this);
     connect(moveTimer,SIGNAL(timeout()),this,SLOT(move()));
     moveTimer->start(1);
+
+    //csuszas
+    slidingTimer=new QTimer(this);
+    connect(slidingTimer,SIGNAL(timeout()),this,SLOT(stopSliding()));
+    slidingTimer->setSingleShot(true);
+    slidingCD=new QTimer(this);
+    slidingCD->setSingleShot(true);
 }
 
 void Character::keyPressEvent(QKeyEvent *event)
@@ -43,7 +50,7 @@ void Character::keyPressEvent(QKeyEvent *event)
         qDebug() << "Right";
     }
     if (event->key() == Qt::Key_S){
-        //jumping=true;
+        sliding=true;
         qDebug() << "Slide";
     }
 }
@@ -52,24 +59,41 @@ void Character::keyReleaseEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_W){
         jumping=false;
-        qDebug() << "Jump stopped";
+        qDebug() << "Jump key released";
     }
     if (event->key() == Qt::Key_A){
         goingLeft=false;
-        qDebug() << "Left stopped";
+        qDebug() << "Left key released";
     }
     if (event->key() == Qt::Key_D){
         goingRight=false;
-        qDebug() << "Right stopped";
+        qDebug() << "Right key released";
     }
     if (event->key() == Qt::Key_S){
-        //jumping=true;
-        qDebug() << "Slide";
+        sliding=false;
+        qDebug() << "Slide key released";
     }
 }
 
 void Character::move()
 {
+    //sliding, ez van eloszor, mert ez befolyasolja a hitboxot, ami minden mas mozgast
+    /*slidingTime++;
+    if(slidingTime>1000)
+    {
+        //abbahagyja a slideot
+        qDebug() << "Sliding time over";
+    }
+    if(!sliding && slidingTime>500 && slidingTime<1000)
+    {
+        slidingTime=1000;
+        qDebug() << "Sliding stopped before 1 sec";
+    }
+    if(slidingTime>1500)
+    {
+        slidingTime=0;
+        qDebug() << "Sliding time reset";
+    } */
     //gravitacio
     yVelocity -= (jumping && yVelocity>0 ? 0.0005 : 0.0010);
 
@@ -77,14 +101,50 @@ void Character::move()
     wallLeft=false;
     wallRight=false;
 
-    //foldreerkezes
+    //foldon van-e
     QList<QGraphicsItem *> bottomCollidingItems = bottom->collidingItems();
     for (int i = 0, n = bottomCollidingItems.size(); i < n; ++i)
     {
-        if (typeid(*(bottomCollidingItems[i])) == typeid(Terrain)) //ha erintkezik a folddel, akkor nem eshet
+        //ha erintkezik a folddel, akkor nem eshet es csak akkor csuszhat
+        if (typeid(*(bottomCollidingItems[i])) == typeid(Terrain))
         {
+            //eses megallitasa
             yVelocity = (yVelocity < 0 ? 0 : yVelocity);
-            jumpsLeft =1; //ha leer a foldre akkor ugorhat ujra
+            //ha leer a foldre akkor ugorhat ujra
+            jumpsLeft =1;
+            //csuszas
+            if(!slidingTimer->isActive() && !slidingCD->isActive() && sliding)
+            {
+                //TODO: elkezd csuszni
+                top->setLine(3, 101, 96, 101);
+                right->setLine(99, 104, 99, 196);
+                left->setLine(1, 104, 1, 196);
+
+                qDebug() << "started sliding";
+                slidingTimer->start(1000);
+            }
+
+        }
+    }
+    if(!sliding && slidingTimer->remainingTime()<500 && slidingTimer->isActive())
+    {
+        slidingTimer->stop();
+        stopSliding();
+        qDebug() << "sliding stopped, released slide button";
+    }
+    if(yVelocity!=0 && slidingTimer->isActive())
+    {
+        slidingTimer->stop();
+        stopSliding();
+        qDebug() << "sliding stopped, left ground";
+    }
+    QList<QGraphicsItem *> topCollidingItems = top->collidingItems();
+    for (int i = 0, n = topCollidingItems.size(); i < n; ++i)
+    {
+        if (typeid(*(topCollidingItems[i])) == typeid(Terrain)) //ha erintkezik plafonnal, akkor stop
+        {
+            //ugras megallitasa
+            yVelocity = (yVelocity > 0 ? 0 : yVelocity);
         }
     }
     if(goingRight)
@@ -92,7 +152,7 @@ void Character::move()
         QList<QGraphicsItem *> rightCollidingItems = right->collidingItems();
         for (int i = 0, n = rightCollidingItems.size(); i < n; ++i)
         {
-            if (typeid(*(rightCollidingItems[i])) == typeid(Terrain)) //ha nem erintkezik fallal, akkor mehet
+            if (typeid(*(rightCollidingItems[i])) == typeid(Terrain)) //vane fal mellette
             {
                 qDebug() << "wallRight";
                 wallRight=true;
@@ -104,7 +164,7 @@ void Character::move()
         QList<QGraphicsItem *> leftCollidingItems = left->collidingItems();
         for (int i = 0, n = leftCollidingItems.size(); i < n; ++i)
         {
-            if (typeid(*(leftCollidingItems[i])) == typeid(Terrain)) //ha nem erintkezik fallal, akkor mehet
+            if (typeid(*(leftCollidingItems[i])) == typeid(Terrain)) //vane fal mellette
             {
                 qDebug() << "wallLeft";
                 wallLeft=true;
@@ -112,11 +172,31 @@ void Character::move()
         }
     }
     //oldalra mozgas
+    //ha levegoben van vagy csuszik, akkor lassabban mozog oldalra, mint ha futna a foldon
     if(goingRight && !wallRight)
-        setPos(x()+(yVelocity == 0 ? 0.4 : 0.3), y());
+        setPos(x()+(yVelocity == 0 && !slidingTimer->isActive() ? 0.4 : 0.25), y());
     if(goingLeft && !wallLeft)
-        setPos(x()-(yVelocity == 0 ? 0.4 : 0.3), y());
+        setPos(x()-(yVelocity == 0 && !slidingTimer->isActive()  ? 0.4 : 0.25), y());
     //ha erintkezik a folddel, akkor a yvelocity 0, ha esik, akkor negativ, ha ugrik akkr pozitiv
     setPos(x(), y()-yVelocity);
 
+}
+
+void Character::stopSliding()
+{
+    //TODO: stop sliding
+    top->setLine(3, 1, 96, 1);
+    QList<QGraphicsItem *> topCollidingItems = top->collidingItems();
+    for (int i = 0, n = topCollidingItems.size(); i < n; ++i)
+    {
+        if (typeid(*(topCollidingItems[i])) == typeid(Terrain))
+        {
+            top->setLine(3, 101, 96, 101);
+            slidingTimer->start(10);
+            return;
+        }
+    }
+    right->setLine(99, 4, 99, 196);
+    left->setLine(1, 4, 1, 196);
+    slidingCD->start(500);
 }

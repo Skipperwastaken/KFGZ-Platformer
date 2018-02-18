@@ -25,16 +25,20 @@ Game::Game(QWidget *parent)
 
     // jatekos letrehozasa
     player = new Character();
-    player->setPos(screenWidth/2,screenHeight/2);  //itt majd lesz rendes helye is
+    player->setPos(screenWidth/4,screenHeight/2);  //itt majd lesz rendes helye is
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
 
     //ideiglenes map teszt
     Terrain *ground = new Terrain(0, screenHeight*4/5, screenWidth, screenHeight/5);
-    Terrain *wall = new Terrain(screenWidth/2-50, screenHeight*4/5-100, 100, 100);
+    Terrain *wall = new Terrain(screenWidth/2-250, screenHeight*4/5-100, 100, 100);
+    Terrain *bar = new Terrain(screenWidth/2+50, screenHeight*4/5-200, 100, 100);
+    Terrain *bar2 = new Terrain(screenWidth/2+250, screenHeight*4/5-350, 100, 100);
     scene->addItem(ground);
     scene->addItem(wall);
+    scene->addItem(bar);
+    scene->addItem(bar2);
 
     //ha minden elokeszulet kesz, megnyitjuk az ablakot, androidon nincs tálca, úgyhogy windowson is fullscreennel kell tesztelni
     showFullScreen();
