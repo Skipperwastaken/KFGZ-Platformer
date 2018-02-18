@@ -8,6 +8,7 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QList>
+#include <QPen>
 
 
 class Character:public QObject, public QGraphicsPixmapItem{
