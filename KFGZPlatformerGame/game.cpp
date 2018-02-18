@@ -31,8 +31,10 @@ Game::Game(QWidget *parent)
     scene->addItem(player);
 
     //ideiglenes map teszt
-    Terrain *newRect = new Terrain(0, screenHeight*4/5+10, screenWidth, screenHeight/5);
-    scene->addItem(newRect);
+    Terrain *ground = new Terrain(0, screenHeight*4/5, screenWidth, screenHeight/5);
+    Terrain *wall = new Terrain(screenWidth/2-50, screenHeight*4/5-100, 100, 100);
+    scene->addItem(ground);
+    scene->addItem(wall);
 
     //ha minden elokeszulet kesz, megnyitjuk az ablakot, androidon nincs tálca, úgyhogy windowson is fullscreennel kell tesztelni
     showFullScreen();

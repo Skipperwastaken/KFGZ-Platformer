@@ -8,13 +8,13 @@ Character::Character(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
     setPixmap(QPixmap(":/images/images/character.png").scaled(QSize(100, 200)));
 
     //QLine itemek, ezekkel tud erintkezni a kornyezettel a karakter
-    top = new QGraphicsLineItem(1, 1, 98, 1, this);
+    top = new QGraphicsLineItem(3, 1, 96, 1, this);
     top->setPen(QPen(Qt::cyan, 4));
-    right = new QGraphicsLineItem(98, 8, 98, 192, this);
+    right = new QGraphicsLineItem(99, 4, 99, 196, this);
     right->setPen(QPen(Qt::blue, 4));
-    bottom = new QGraphicsLineItem(1, 198, 98, 198, this);
+    bottom = new QGraphicsLineItem(4, 199, 96, 199, this);
     bottom->setPen(QPen(Qt::black, 4));
-    left = new QGraphicsLineItem(1, 8, 1, 192, this);
+    left = new QGraphicsLineItem(1, 4, 1, 196, this);
     left->setPen(QPen(Qt::red, 4));
 
     //timer, annyi idokozonkent mozog a karakter
@@ -73,6 +73,10 @@ void Character::move()
     //gravitacio
     yVelocity -= (jumping && yVelocity>0 ? 0.0005 : 0.0010);
 
+    //fal erzekeles reset
+    wallLeft=false;
+    wallRight=false;
+
     //foldreerkezes
     QList<QGraphicsItem *> bottomCollidingItems = bottom->collidingItems();
     for (int i = 0, n = bottomCollidingItems.size(); i < n; ++i)
@@ -88,9 +92,10 @@ void Character::move()
         QList<QGraphicsItem *> rightCollidingItems = right->collidingItems();
         for (int i = 0, n = rightCollidingItems.size(); i < n; ++i)
         {
-            if (typeid(*(rightCollidingItems[i])) != typeid(Terrain)) //ha nem erintkezik fallal, akkor mehet
+            if (typeid(*(rightCollidingItems[i])) == typeid(Terrain)) //ha nem erintkezik fallal, akkor mehet
             {
-                setPos(x()+0.4, y());
+                qDebug() << "wallRight";
+                wallRight=true;
             }
         }
     }
@@ -99,14 +104,18 @@ void Character::move()
         QList<QGraphicsItem *> leftCollidingItems = left->collidingItems();
         for (int i = 0, n = leftCollidingItems.size(); i < n; ++i)
         {
-            if (typeid(*(leftCollidingItems[i])) != typeid(Terrain)) //ha nem erintkezik fallal, akkor mehet
+            if (typeid(*(leftCollidingItems[i])) == typeid(Terrain)) //ha nem erintkezik fallal, akkor mehet
             {
-                setPos(x()-0.4, y());
+                qDebug() << "wallLeft";
+                wallLeft=true;
             }
         }
     }
-
-
+    //oldalra mozgas
+    if(goingRight && !wallRight)
+        setPos(x()+0.4, y());
+    if(goingLeft && !wallLeft)
+        setPos(x()-0.4, y());
     //ha erintkezik a folddel, akkor a yvelocity 0, ha esik, akkor negativ, ha ugrik akkr pozitiv
     setPos(x(), y()-yVelocity);
 
