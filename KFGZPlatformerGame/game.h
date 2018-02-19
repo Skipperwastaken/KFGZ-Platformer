@@ -10,13 +10,15 @@
 class Game: public QGraphicsView{
     Q_OBJECT
 public:
-    Game(QWidget * parent=0);
+    Game();
     ~Game();
 
     QGraphicsScene * scene;
     int screenHeight, screenWidth;
     Character *player;
     QPushButton * exitButton;
+public slots:
+    void exitGame();
 };
 
 #endif // GAME_H

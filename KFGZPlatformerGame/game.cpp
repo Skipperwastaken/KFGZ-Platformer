@@ -4,7 +4,7 @@
 #include "terrain.h"
 #include <QDebug>
 
-Game::Game(QWidget *parent)
+Game::Game()
 {
     /*elmentjuk a kepernyo magassagat es szelesseget, ez fontos, mert nem minden telon ugyanaz,
     a dolgok meretet pedig ez alapjan szamoljuk*/
@@ -39,9 +39,12 @@ Game::Game(QWidget *parent)
     scene->addItem(bar);
     scene->addItem(bar2);
 
-    //kilepesgomb
-    //exitButton = new QPushButton(QString("Exit"), this);
-
+    //kilepesgomb, itt kesobb majd egy kis menu lesz
+    exitButton = new QPushButton(QString("Exit"));
+    exitButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
+    scene->addWidget(exitButton);
+    connect(exitButton, SIGNAL(clicked()),
+            this, SLOT(exitGame()));
 
     //ha minden elokeszulet kesz, megnyitjuk az ablakot, androidon nincs tálca, úgyhogy windowson is fullscreennel kell tesztelni
     showFullScreen();
@@ -51,4 +54,9 @@ Game::Game(QWidget *parent)
 Game::~Game()
 {
     qDebug() << "game deleted";
+}
+
+void Game::exitGame()
+{
+    close();
 }
