@@ -32,6 +32,11 @@ Character::Character(QGraphicsItem *parent): QGraphicsRectItem(parent)
     slidingCD->setSingleShot(true);
 }
 
+Character::~Character()
+{
+    qDebug() << "Character deleted";
+}
+
 void Character::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_W){
@@ -164,7 +169,6 @@ void Character::move()
         setPos(x()-(yVelocity == 0 && !slidingTimer->isActive()  ? 0.4 : 0.25), y());
     //ha erintkezik a folddel, akkor a yvelocity 0, ha esik, akkor negativ, ha ugrik akkr pozitiv
     setPos(x(), y()-yVelocity);
-
 }
 
 void Character::stopSliding()
