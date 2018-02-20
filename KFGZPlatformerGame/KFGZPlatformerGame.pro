@@ -29,13 +29,15 @@ SOURCES += \
     game.cpp \
     character.cpp \
     terrain.cpp \
-    enemy.cpp
+    enemy.cpp \
+    Menu.cpp
 
 HEADERS += \
     game.h \
     character.h \
     terrain.h \
-    enemy.h
+    enemy.h \
+    Menu.h
 
 FORMS +=
 

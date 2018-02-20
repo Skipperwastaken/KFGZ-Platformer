@@ -12,7 +12,7 @@ Menu::Menu()
     QScreen *screen = QGuiApplication::primaryScreen();
     screenWidth = screen->geometry().width();
     screenHeight = screen->geometry().height();
-    qDebug() << screenHeight << " " << screenWidth;
+    //qDebug() << screenHeight << " " << screenWidth;
 
     //creating scene
     scene = new QGraphicsScene(this);
@@ -30,6 +30,8 @@ Menu::Menu()
     playButton = new QPushButton(QString("Play"));
     playButton->setGeometry(QRect(QPoint(screenWidth/30,screenHeight-(screenHeight/4)-3*(screenHeight/6)-3*(screenHeight/30)),QSize(screenWidth/3, screenHeight/6)));
     scene->addWidget(playButton);
+    connect(playButton, &QAbstractButton::clicked,
+            this, &Menu::startGame);
 
     //shop button
     shopButton = new QPushButton(QString("Shop"));
@@ -47,7 +49,8 @@ Menu::Menu()
     quitButton = new QPushButton(QString("Quit"));
     quitButton->setGeometry(QRect(QPoint(screenWidth/30,screenHeight-(screenHeight/4)),QSize(screenWidth/3, screenHeight/6)));
     scene->addWidget(quitButton);
-    connect(quitButton,SIGNAL(clicked()),this, SLOT(quitGame()));
+    connect(quitButton, &QAbstractButton::clicked,
+            this, &Menu::quitApp);
 
 
 
@@ -58,7 +61,13 @@ Menu::Menu()
 
 }
 
-void Menu::quitGame()
+void Menu::startGame()
+{
+    game = new Game;
+    game->setAttribute(Qt::WA_DeleteOnClose);
+}
+
+void Menu::quitApp()
 {
     close();
 }

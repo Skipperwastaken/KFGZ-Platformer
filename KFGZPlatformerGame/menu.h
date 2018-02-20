@@ -20,8 +20,10 @@ public:
     QPushButton * shopButton;
     QPushButton * settingsButton;
     QPushButton * quitButton;
+    Game * game;
 public slots:
-    void quitGame();
+    void startGame();
+    void quitApp();
 
 
 };

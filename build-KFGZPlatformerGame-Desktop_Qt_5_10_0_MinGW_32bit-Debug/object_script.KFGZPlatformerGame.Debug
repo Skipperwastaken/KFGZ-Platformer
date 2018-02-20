@@ -1,0 +1,13 @@
+INPUT(
+./debug\main.o
+./debug\game.o
+./debug\character.o
+./debug\terrain.o
+./debug\enemy.o
+./debug\Menu.o
+./debug\qrc_res.o
+./debug\moc_game.o
+./debug\moc_character.o
+./debug\moc_enemy.o
+./debug\moc_Menu.o
+);
