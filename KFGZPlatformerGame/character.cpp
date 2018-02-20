@@ -46,19 +46,19 @@ void Character::keyPressEvent(QKeyEvent *event)
             jumpsLeft--;
         }
         jumping=true;
-        qDebug() << "Jump";
+        //qDebug() << "Jump";
     }
     if (event->key() == Qt::Key_A){
         goingLeft=true;
-        qDebug() << "Left";
+        //qDebug() << "Left";
     }
     if (event->key() == Qt::Key_D){
         goingRight=true;
-        qDebug() << "Right";
+        //qDebug() << "Right";
     }
     if (event->key() == Qt::Key_S){
         sliding=true;
-        qDebug() << "Slide";
+        //qDebug() << "Slide";
     }
 }
 
@@ -66,19 +66,19 @@ void Character::keyReleaseEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_W){
         jumping=false;
-        qDebug() << "Jump key released";
+        //qDebug() << "Jump key released";
     }
     if (event->key() == Qt::Key_A){
         goingLeft=false;
-        qDebug() << "Left key released";
+        //qDebug() << "Left key released";
     }
     if (event->key() == Qt::Key_D){
         goingRight=false;
-        qDebug() << "Right key released";
+        //qDebug() << "Right key released";
     }
     if (event->key() == Qt::Key_S){
         sliding=false;
-        qDebug() << "Slide key released";
+        //qDebug() << "Slide key released";
     }
 }
 
@@ -110,7 +110,7 @@ void Character::move()
                 right->setLine(99, 104, 99, 196);
                 left->setLine(1, 104, 1, 196);
 
-                qDebug() << "started sliding";
+                //qDebug() << "started sliding";
                 slidingTimer->start(1000);
             }
 
@@ -120,13 +120,13 @@ void Character::move()
     {
         slidingTimer->stop();
         stopSliding();
-        qDebug() << "sliding stopped, released slide button";
+        //qDebug() << "sliding stopped, released slide button";
     }
     if(yVelocity!=0 && slidingTimer->isActive())
     {
         slidingTimer->stop();
         stopSliding();
-        qDebug() << "sliding stopped, left ground";
+        //qDebug() << "sliding stopped, left ground";
     }
     QList<QGraphicsItem *> topCollidingItems = top->collidingItems();
     for (int i = 0, n = topCollidingItems.size(); i < n; ++i)
@@ -144,7 +144,7 @@ void Character::move()
         {
             if (typeid(*(rightCollidingItems[i])) == typeid(Terrain)) //vane fal mellette
             {
-                qDebug() << "wallRight";
+                //qDebug() << "wallRight";
                 wallRight=true;
             }
         }
@@ -156,7 +156,7 @@ void Character::move()
         {
             if (typeid(*(leftCollidingItems[i])) == typeid(Terrain)) //vane fal mellette
             {
-                qDebug() << "wallLeft";
+                //qDebug() << "wallLeft";
                 wallLeft=true;
             }
         }

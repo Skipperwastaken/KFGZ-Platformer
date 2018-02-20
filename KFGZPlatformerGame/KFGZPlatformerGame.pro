@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
     game.cpp \
     character.cpp \
-    terrain.cpp
+    terrain.cpp \
+    enemy.cpp
 
 HEADERS += \
     game.h \
     character.h \
-    terrain.h
+    terrain.h \
+    enemy.h
 
 FORMS +=
 

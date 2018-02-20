@@ -12,7 +12,8 @@
 #include <QPen>
 
 
-class Character:public QObject, public QGraphicsRectItem{
+class Character:public QObject, public QGraphicsRectItem
+{
     Q_OBJECT
 public:
     Character(QGraphicsItem * parent=0);
@@ -23,8 +24,8 @@ public:
     void keyReleaseEvent(QKeyEvent * event);
     QTimer *moveTimer;
     double yVelocity=-5;
-    bool jumping=false; //levan-e nyomva az ugras, lehetne magassabbat ugrani, ha hosszan van lenyomva
-    int jumpsLeft=1; //hany ugras van vissza, majd lehet double jumpot is belerakni, plusz kell programozas szempontbol is
+    bool jumping=false; //levan-e nyomva az ugras, lehet magassabbat ugrani, ha hosszan van lenyomva
+    int jumpsLeft=1; //hany ugras van vissza
     bool goingLeft=false, goingRight=false, wallRight=false, wallLeft=false; //levane nyomva egy gomb, amivel oldalra megy a karakter
     bool sliding=false;
     QTimer *slidingTimer, *slidingCD; //ido, ameddig csuszik es amig ujra csuszhat

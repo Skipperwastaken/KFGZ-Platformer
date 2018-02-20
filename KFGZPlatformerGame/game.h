@@ -7,7 +7,8 @@
 #include "character.h"
 #include <QPushButton>
 
-class Game: public QGraphicsView{
+class Game: public QGraphicsView
+{
     Q_OBJECT
 public:
     Game();

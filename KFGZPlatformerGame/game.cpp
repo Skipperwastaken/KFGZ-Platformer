@@ -11,7 +11,7 @@ Game::Game()
     QScreen *screen = QGuiApplication::primaryScreen();
     screenWidth = screen->geometry().width();
     screenHeight = screen->geometry().height();
-    qDebug() << screenHeight << " " << screenWidth;
+    qDebug() << "Screen height: " << screenHeight << ", Screen width: " << screenWidth;
 
     // scene, ez a palya
     scene = new QGraphicsScene(this);
@@ -43,8 +43,8 @@ Game::Game()
     exitButton = new QPushButton(QString("Exit"));
     exitButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
     scene->addWidget(exitButton);
-    connect(exitButton, SIGNAL(clicked()),
-            this, SLOT(exitGame()));
+    connect(exitButton, &QAbstractButton::clicked,
+            this, &Game::exitGame);
 
     //ha minden elokeszulet kesz, megnyitjuk az ablakot, androidon nincs tálca, úgyhogy windowson is fullscreennel kell tesztelni
     showFullScreen();
