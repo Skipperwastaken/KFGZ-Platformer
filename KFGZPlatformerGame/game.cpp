@@ -4,8 +4,10 @@
 #include "terrain.h"
 #include <QDebug>
 
+
 Game::Game()
 {
+
     /*elmentjuk a kepernyo magassagat es szelesseget, ez fontos, mert nem minden telon ugyanaz,
     a dolgok meretet pedig ez alapjan szamoljuk*/
     QScreen *screen = QGuiApplication::primaryScreen();
