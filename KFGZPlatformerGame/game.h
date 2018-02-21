@@ -6,6 +6,10 @@
 #include <QGraphicsScene>
 #include "character.h"
 #include <QPushButton>
+#include <QKeyEvent>
+#include <QTimer>
+#include <cmath>
+#include "spearman.h"
 
 class Game: public QGraphicsView
 {
@@ -18,7 +22,15 @@ public:
     int screenHeight, screenWidth;
     Character *player;
     QPushButton * exitButton;
+
+    SpearMan *spearman;
+    //timer ami alapjan az ellenfelek es a jatekos kozelseget nezi
+    QTimer *checkForAttactT;
+
+    void keyPressEvent(QKeyEvent * event);
+    void keyReleaseEvent(QKeyEvent * event);
 public slots:
+    void checkForAttact();
     void exitGame();
 };
 

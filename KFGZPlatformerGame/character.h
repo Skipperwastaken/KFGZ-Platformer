@@ -6,7 +6,6 @@
 #include <QObject>
 #include <QGraphicsItem>
 #include <QGraphicsLineItem>
-#include <QKeyEvent>
 #include <QTimer>
 #include <QList>
 #include <QPen>
@@ -20,8 +19,6 @@ public:
     ~Character();
     QGraphicsPixmapItem *model;
     QGraphicsLineItem *top, *right, *bottom, *left;
-    void keyPressEvent(QKeyEvent * event);
-    void keyReleaseEvent(QKeyEvent * event);
     QTimer *moveTimer;
     double yVelocity=-5;
     bool jumping=false; //levan-e nyomva az ugras, lehet magassabbat ugrani, ha hosszan van lenyomva

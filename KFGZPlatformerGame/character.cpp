@@ -37,51 +37,6 @@ Character::~Character()
     qDebug() << "Character deleted";
 }
 
-void Character::keyPressEvent(QKeyEvent *event)
-{
-    if (event->key() == Qt::Key_W){
-        if(!event->isAutoRepeat() && jumpsLeft>0)
-        {
-            yVelocity=0.6;
-            jumpsLeft--;
-        }
-        jumping=true;
-        //qDebug() << "Jump";
-    }
-    if (event->key() == Qt::Key_A){
-        goingLeft=true;
-        //qDebug() << "Left";
-    }
-    if (event->key() == Qt::Key_D){
-        goingRight=true;
-        //qDebug() << "Right";
-    }
-    if (event->key() == Qt::Key_S){
-        sliding=true;
-        //qDebug() << "Slide";
-    }
-}
-
-void Character::keyReleaseEvent(QKeyEvent *event)
-{
-    if (event->key() == Qt::Key_W){
-        jumping=false;
-        //qDebug() << "Jump key released";
-    }
-    if (event->key() == Qt::Key_A){
-        goingLeft=false;
-        //qDebug() << "Left key released";
-    }
-    if (event->key() == Qt::Key_D){
-        goingRight=false;
-        //qDebug() << "Right key released";
-    }
-    if (event->key() == Qt::Key_S){
-        sliding=false;
-        //qDebug() << "Slide key released";
-    }
-}
-
 void Character::move()
 {
     //gravitacio

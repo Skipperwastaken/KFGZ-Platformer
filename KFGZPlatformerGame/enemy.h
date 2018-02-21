@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QPixmap>
+#include <QDebug>
 
 class Enemy:public QObject, public QGraphicsRectItem
 {
@@ -14,9 +15,9 @@ public:
     QGraphicsPixmapItem *model;
     QGraphicsPixmapItem *attackHitBox;
     QPixmap normalModel, prepModel, attackModel; //ideiglenes, kesobb lesznek animaciok
-    QTimer *prepAttackT, *attackT;
+    QTimer *prepAttackT, *attackT, *attackCD;
     int prepTime;
-
+    void setNormalModel(QString mdl);
 signals:
     void hit();
 public slots:

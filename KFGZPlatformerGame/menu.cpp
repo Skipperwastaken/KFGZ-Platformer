@@ -51,14 +51,14 @@ Menu::Menu()
     scene->addWidget(quitButton);
     connect(quitButton, &QAbstractButton::clicked,
             this, &Menu::quitApp);
-
-
-
-
     //fullscreen
 
     showFullScreen();
+}
 
+Menu::~Menu()
+{
+    qDebug() << "Menu deleted";
 }
 
 void Menu::startGame()

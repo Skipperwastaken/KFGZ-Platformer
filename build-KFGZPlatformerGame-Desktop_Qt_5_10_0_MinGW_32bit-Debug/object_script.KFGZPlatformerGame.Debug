@@ -5,9 +5,11 @@ INPUT(
 ./debug\terrain.o
 ./debug\enemy.o
 ./debug\Menu.o
+./debug\spearman.o
 ./debug\qrc_res.o
 ./debug\moc_game.o
 ./debug\moc_character.o
 ./debug\moc_enemy.o
 ./debug\moc_Menu.o
+./debug\moc_spearman.o
 );

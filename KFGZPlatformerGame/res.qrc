@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/images">
         <file>images/character.png</file>
+        <file>images/enemies/spearMan/spearman.png</file>
+        <file>images/enemies/spearMan/spearmanAttack.png</file>
+        <file>images/enemies/spearMan/spearmanPrep.png</file>
     </qresource>
 </RCC>

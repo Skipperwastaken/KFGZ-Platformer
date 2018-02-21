@@ -13,7 +13,7 @@ class Menu: public QGraphicsView{
     Q_OBJECT
 public:
     Menu();
-
+    ~Menu();
     QGraphicsScene * scene;
     int screenHeight, screenWidth;
     QPushButton * playButton;

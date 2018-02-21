@@ -30,14 +30,16 @@ SOURCES += \
     character.cpp \
     terrain.cpp \
     enemy.cpp \
-    Menu.cpp
+    Menu.cpp \
+    spearman.cpp
 
 HEADERS += \
     game.h \
     character.h \
     terrain.h \
     enemy.h \
-    Menu.h
+    Menu.h \
+    spearman.h
 
 FORMS +=
 
