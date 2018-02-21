@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QPixmap>
 #include <QDebug>
+#include "character.h"
 
 class Enemy:public QObject, public QGraphicsRectItem
 {

@@ -115,7 +115,7 @@ void Game::checkForAttact()
 {
     if(std::abs(player->pos().y()-spearman->pos().y()) < 300 && std::abs(player->pos().x()-spearman->pos().x()) < 300)
     {
-        qDebug() << "spearman close";
+        //qDebug() << "spearman close";
         spearman->prepAttack();
     }
 }

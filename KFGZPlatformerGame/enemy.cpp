@@ -35,12 +35,24 @@ void Enemy::attack()
 {
     qDebug() << "attack";
     model->setPixmap(attackModel);
+    attackHitBox->show();
+    QList<QGraphicsItem *> hitStuff = attackHitBox->collidingItems();
+    for (int i = 0, n = hitStuff.size(); i < n; ++i)
+    {
+        //ha karaktert er, akkor hit() jelzest emittel
+        if (typeid(*(hitStuff[i])) == typeid(Character))
+        {
+            emit hit();
+            qDebug() << "hit";
+        }
+    }
     attackT->start(500);
 }
 
 void Enemy::finishAttack()
 {
     qDebug() << "finish attack";
+    attackHitBox->hide();
     model->setPixmap(normalModel);
     attackCD->start(2000);
 }
