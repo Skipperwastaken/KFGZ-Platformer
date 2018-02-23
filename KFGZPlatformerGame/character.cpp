@@ -47,11 +47,11 @@ void Character::move()
     wallRight=false;
 
     //foldon van-e
-    QList<QGraphicsItem *> bottomCollidingItems = bottom->collidingItems();
+    bottomCollidingItems = bottom->collidingItems();
     for (int i = 0, n = bottomCollidingItems.size(); i < n; ++i)
     {
         //ha erintkezik a folddel, akkor nem eshet es csak akkor csuszhat
-        if (typeid(*(bottomCollidingItems[i])) == typeid(Terrain))
+        if (typeid(*(bottomCollidingItems.at(i))) == typeid(Terrain))
         {
             //eses megallitasa
             yVelocity = (yVelocity < 0 ? 0 : yVelocity);
@@ -83,33 +83,39 @@ void Character::move()
         stopSliding();
         //qDebug() << "sliding stopped, left ground";
     }
-    QList<QGraphicsItem *> topCollidingItems = top->collidingItems();
+    topCollidingItems = top->collidingItems();
     for (int i = 0, n = topCollidingItems.size(); i < n; ++i)
     {
-        if (typeid(*(topCollidingItems[i])) == typeid(Terrain)) //ha erintkezik plafonnal, akkor stop
+        if (typeid(*(topCollidingItems.at(i))) == typeid(Terrain)) //ha erintkezik plafonnal, akkor stop
         {
             //ugras megallitasa
             yVelocity = (yVelocity > 0 ? 0 : yVelocity);
         }
     }
-    if(goingRight)
+
+    //jobb oldalrol jonni fog a fal, igy ott jobban megkell csinalni a falnak utkozest
+    //ha mas iranyba is mozognanak feluletek, akkor ott is megkene ilyenre csinalni
+        //qDebug() << "rightWall";
+    rightCollidingItems = right->collidingItems();
+    for (int i = 0, n = rightCollidingItems.size(); i < n; ++i)
     {
-        QList<QGraphicsItem *> rightCollidingItems = right->collidingItems();
-        for (int i = 0, n = rightCollidingItems.size(); i < n; ++i)
+        if (typeid(*(rightCollidingItems.at(i))) == typeid(Terrain)) //vane fal mellette
         {
-            if (typeid(*(rightCollidingItems[i])) == typeid(Terrain)) //vane fal mellette
+            qDebug() << rightCollidingItems[i]->scenePos().x() << " " << pos().x();
+            if(rightCollidingItems[i]->scenePos().x()-100<pos().x())
             {
-                //qDebug() << "wallRight";
-                wallRight=true;
+                setPos(rightCollidingItems[i]->scenePos().x()-100, y());
             }
         }
     }
+
+
     if(goingLeft)
     {
-        QList<QGraphicsItem *> leftCollidingItems = left->collidingItems();
+        leftCollidingItems = left->collidingItems();
         for (int i = 0, n = leftCollidingItems.size(); i < n; ++i)
         {
-            if (typeid(*(leftCollidingItems[i])) == typeid(Terrain)) //vane fal mellette
+            if (typeid(*(leftCollidingItems.at(i))) == typeid(Terrain)) //vane fal mellette
             {
                 //qDebug() << "wallLeft";
                 wallLeft=true;
@@ -130,10 +136,9 @@ void Character::stopSliding()
 {
     //TODO: stop sliding
     top->setLine(4, 1, 96, 1);
-    QList<QGraphicsItem *> topCollidingItems = top->collidingItems();
     for (int i = 0, n = topCollidingItems.size(); i < n; ++i)
     {
-        if (typeid(*(topCollidingItems[i])) == typeid(Terrain))
+        if (typeid(*(topCollidingItems.at(i))) == typeid(Terrain))
         {
             top->setLine(4, 101, 96, 101);
             slidingTimer->start(10);

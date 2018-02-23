@@ -5,5 +5,6 @@
         <file>images/enemies/spearMan/spearmanAttack.png</file>
         <file>images/enemies/spearMan/spearmanPrep.png</file>
         <file>images/enemies/spearMan/spearmanHitbox.png</file>
+        <file>images/pauseMenu.png</file>
     </qresource>
 </RCC>
