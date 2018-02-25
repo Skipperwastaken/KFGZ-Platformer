@@ -31,7 +31,7 @@ Menu::Menu()
     playButton->setGeometry(QRect(QPoint(screenWidth/30,screenHeight-(screenHeight/4)-3*(screenHeight/6)-3*(screenHeight/30)),QSize(screenWidth/3, screenHeight/6)));
     scene->addWidget(playButton);
     connect(playButton, &QAbstractButton::clicked,
-            this, &Menu::startGame);
+            this, &Menu::openGameModeSelect);
 
     //shop button
     shopButton = new QPushButton(QString("Shop"));
@@ -51,6 +51,40 @@ Menu::Menu()
     scene->addWidget(quitButton);
     connect(quitButton, &QAbstractButton::clicked,
             this, &Menu::quitApp);
+
+    //Creating level select/game mode buttons
+    //Game mode back button
+    backButton = new QPushButton(QString("Back"));
+    backButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
+    scene->addWidget(backButton);
+    connect(backButton, &QAbstractButton::clicked,
+            this, &Menu::closeGameModeSelect);
+    backButton->hide();
+
+    //Game mode: endless button
+    endlessGameButton = new QPushButton(QString("Endless"));
+    endlessGameButton->setGeometry(QRect(QPoint(screenWidth/8,screenHeight/4),QSize(screenWidth/4, screenHeight/2)));
+    scene->addWidget(endlessGameButton);
+    connect(endlessGameButton, &QAbstractButton::clicked,
+            this, &Menu::startGame);
+    endlessGameButton->hide();
+
+    //Game mode: story button
+    storyGameButton = new QPushButton(QString("Story"));
+    storyGameButton->setGeometry(QRect(QPoint(screenWidth/8*5,screenHeight/4),QSize(screenWidth/4, screenHeight/2)));
+    scene->addWidget(storyGameButton);
+    connect(storyGameButton, &QAbstractButton::clicked,
+            this, &Menu::openStoryMode);
+    storyGameButton->hide();
+
+    //Story mode back button
+    backStoryModeButton = new QPushButton(QString("Back"));
+    backStoryModeButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
+    scene->addWidget(backStoryModeButton);
+    connect(backStoryModeButton, &QAbstractButton::clicked,
+            this, &Menu::closeStoryMode);
+    backStoryModeButton->hide();
+
     //fullscreen
 
     showFullScreen();
@@ -72,3 +106,40 @@ void Menu::quitApp()
     close();
 }
 
+void Menu::openGameModeSelect()
+{
+    playButton->hide();
+    shopButton->hide();
+    settingsButton->hide();
+    quitButton->hide();
+    backButton->show();
+    endlessGameButton->show();
+    storyGameButton->show();
+}
+
+void Menu::closeGameModeSelect()
+{
+    playButton->show();
+    shopButton->show();
+    settingsButton->show();
+    quitButton->show();
+    backButton->hide();
+    endlessGameButton->hide();
+    storyGameButton->hide();
+}
+
+void Menu::openStoryMode()
+{
+    backButton->hide();
+    endlessGameButton->hide();
+    storyGameButton->hide();
+    backStoryModeButton->show();
+}
+
+void Menu::closeStoryMode()
+{
+    backButton->show();
+    endlessGameButton->show();
+    storyGameButton->show();
+    backStoryModeButton->hide();
+}

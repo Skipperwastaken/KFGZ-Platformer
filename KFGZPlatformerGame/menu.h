@@ -16,16 +16,26 @@ public:
     ~Menu();
     QGraphicsScene * scene;
     int screenHeight, screenWidth;
+    //Main menu buttons:
     QPushButton * playButton;
     QPushButton * shopButton;
     QPushButton * settingsButton;
     QPushButton * quitButton;
+    //Game mode select buttons:
+    QPushButton * backButton;
+    QPushButton * endlessGameButton;
+    QPushButton * storyGameButton;
+    //Story mode buttons:
+    QPushButton * backStoryModeButton;
     Game * game;
+
 public slots:
     void startGame();
     void quitApp();
-
-
+    void openGameModeSelect();
+    void closeGameModeSelect();
+    void openStoryMode();
+    void closeStoryMode();
 };
 
 
