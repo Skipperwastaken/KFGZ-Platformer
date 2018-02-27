@@ -6,10 +6,12 @@ INPUT(
 ./release\enemy.o
 ./release\Menu.o
 ./release\spearman.o
+./release\mapchunk.o
 ./release\qrc_res.o
 ./release\moc_game.o
 ./release\moc_character.o
 ./release\moc_enemy.o
 ./release\moc_Menu.o
 ./release\moc_spearman.o
+./release\moc_mapchunk.o
 );

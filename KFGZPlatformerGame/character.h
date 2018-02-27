@@ -21,7 +21,7 @@ public:
     QGraphicsLineItem *top, *right, *bottom, *left;
     QList<QGraphicsItem *> topCollidingItems, rightCollidingItems, bottomCollidingItems, leftCollidingItems;
     QTimer *moveTimer;
-    double yVelocity=-5;
+    double yVelocity=0.0008;
     bool jumping=false; //levan-e nyomva az ugras, lehet magassabbat ugrani, ha hosszan van lenyomva
     int jumpsLeft=1; //hany ugras van vissza
     bool goingLeft=false, goingRight=false, wallRight=false, wallLeft=false; //levane nyomva egy gomb, amivel oldalra megy a karakter

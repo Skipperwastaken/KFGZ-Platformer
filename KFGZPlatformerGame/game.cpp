@@ -10,7 +10,7 @@ Game::Game()
     screenHeight = screen->geometry().height();
     qDebug() << "Screen height: " << screenHeight << ", Screen width: " << screenWidth;
 
-    // scene, ez a palya
+    // scene
     scene = new QGraphicsScene(this);
     scene->setSceneRect(0,0,screenWidth-2,screenHeight-2);
 
@@ -33,7 +33,11 @@ Game::Game()
     scene->addItem(player);
 
     //ideiglenes map teszt
-    Terrain *ground = new Terrain(0, screenHeight*4/5, screenWidth, screenHeight/5, 1);
+    chunk.setParams(scene, 1, "asd");
+    qDebug() << scene->items();
+    chunk.createChunk();
+    qDebug() << scene->items();
+    /*Terrain *ground = new Terrain(0, screenHeight*4/5, screenWidth, screenHeight/5, 1);
     wall = new Terrain(0, 0, 100, 100, 2);
     Terrain *bar = new Terrain(0, 0, 100, 100, 3);
     Terrain *bar2 = new Terrain(0, 0, 100, 100, 4);
@@ -44,7 +48,6 @@ Game::Game()
     scene->addItem(wall);
     scene->addItem(bar);
     scene->addItem(bar2);
-
     //ellenfelkereso timer
     checkForAttackSpeed=10;
     checkForAttactT = new QTimer(this);
@@ -58,7 +61,8 @@ Game::Game()
     spearman->setPos(screenWidth/2, screenHeight*4/5-400);
     //qDebug() << "3";
     scene->addItem(spearman);
-    //qDebug() << "4";
+    //qDebug() << "4";*/
+
 
     //pause menu
     pauseMenu = new QGraphicsPixmapItem(QPixmap(":/images/images/pauseMenu.png").scaled(QSize(screenHeight*4/5, screenHeight*4/5)));
@@ -142,7 +146,7 @@ void Game::checkForAttact()
     if(std::abs(player->pos().y()-spearman->pos().y()) < 200 && std::abs(player->pos().x()-spearman->pos().x()) < 200)
     {
         //qDebug() << "spearman close";
-        spearman->prepAttack();
+        //spearman->prepAttack();
     }
 }
 
@@ -165,7 +169,7 @@ void Game::pauseGame()
     exitB->show();
     player->moveTimer->stop();
     mapSlideTimer->stop();
-    checkForAttactT->stop();
+    //checkForAttactT->stop();
 }
 
 void Game::resumeGame()
@@ -180,5 +184,5 @@ void Game::resumeGame()
 
 void Game::testMove()
 {
-    wall->setPos(wall->pos().x()-1, wall->pos().y());
+    //wall->setPos(wall->pos().x()-1, wall->pos().y());
 }

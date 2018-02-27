@@ -15,6 +15,9 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QGraphicsPixmapItem>
+#include <QVector>
+#include "enemy.h"
+#include "mapchunk.h"
 
 class Game: public QGraphicsView
 {
@@ -33,11 +36,12 @@ public:
     QPushButton * settingB;
     QPushButton * exitB;
 
+    MapChunk chunk;
     QTimer *mapSlideTimer;
     int mapSlideSpeed;
     Terrain *wall;
 
-    SpearMan *spearman;
+    Enemy *spearman;
     //timer ami alapjan az ellenfelek es a jatekos kozelseget nezi
     QTimer *checkForAttactT;
     int checkForAttackSpeed;
@@ -46,6 +50,7 @@ public:
     void keyReleaseEvent(QKeyEvent * event);
 public slots:
     void checkForAttact();
+    //void createMapChunk(QVector<Terrain*> t, QVector<Enemy*> v, int ID);
     void exitGame();
     void pauseGame();
     void resumeGame();
