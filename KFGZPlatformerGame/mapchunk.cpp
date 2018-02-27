@@ -23,6 +23,7 @@ void MapChunk::createChunk()
 {
     terrains.append(new Terrain(0, 0, screenWidth, screenHeight/5, 1));
     terrains.append(new Terrain(0, 0, screenHeight/10, screenHeight/10, 1));
+    enemies.append(new SpearMan);
     /*
     wall = new Terrain(0, 0, 100, 100, 2);
     Terrain *bar = new Terrain(0, 0, 100, 100, 3);
@@ -36,6 +37,9 @@ void MapChunk::createChunk()
     scene->addItem(bar2);*/
     terrains[0]->setPos(0, screenHeight*4/5);
     terrains[1]->setPos(screenWidth/3, screenHeight*7/10);
-    scene->addItem(terrains[0]);
-    scene->addItem(terrains[1]);
+    enemies[0]->setPos(screenWidth/2, screenHeight*4/5-200);
+    for(int i=0; i < terrains.length(); i++)
+        scene->addItem(terrains[i]);
+    for(int i=0; i < enemies.length(); i++)
+        scene->addItem(enemies[i]);
 }

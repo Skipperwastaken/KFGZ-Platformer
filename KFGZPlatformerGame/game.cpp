@@ -179,7 +179,7 @@ void Game::resumeGame()
     exitB->hide();
     player->moveTimer->start(1);
     mapSlideTimer->start(mapSlideSpeed);
-    checkForAttactT->start(checkForAttackSpeed);
+    //checkForAttactT->start(checkForAttackSpeed);
 }
 
 void Game::testMove()
