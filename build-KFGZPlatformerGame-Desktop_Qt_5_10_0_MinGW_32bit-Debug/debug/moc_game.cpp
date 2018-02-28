@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Game_t {
     QByteArrayData data[7];
-    char stringdata0[60];
+    char stringdata0[61];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,16 +32,16 @@ struct qt_meta_stringdata_Game_t {
 static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
     {
 QT_MOC_LITERAL(0, 0, 4), // "Game"
-QT_MOC_LITERAL(1, 5, 14), // "checkForAttact"
-QT_MOC_LITERAL(2, 20, 0), // ""
-QT_MOC_LITERAL(3, 21, 8), // "exitGame"
-QT_MOC_LITERAL(4, 30, 9), // "pauseGame"
-QT_MOC_LITERAL(5, 40, 10), // "resumeGame"
-QT_MOC_LITERAL(6, 51, 8) // "testMove"
+QT_MOC_LITERAL(1, 5, 9), // "slideLeft"
+QT_MOC_LITERAL(2, 15, 0), // ""
+QT_MOC_LITERAL(3, 16, 14), // "checkForAttact"
+QT_MOC_LITERAL(4, 31, 8), // "exitGame"
+QT_MOC_LITERAL(5, 40, 9), // "pauseGame"
+QT_MOC_LITERAL(6, 50, 10) // "resumeGame"
 
     },
-    "Game\0checkForAttact\0\0exitGame\0pauseGame\0"
-    "resumeGame\0testMove"
+    "Game\0slideLeft\0\0checkForAttact\0exitGame\0"
+    "pauseGame\0resumeGame"
 };
 #undef QT_MOC_LITERAL
 
@@ -81,11 +81,11 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         Game *_t = static_cast<Game *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->checkForAttact(); break;
-        case 1: _t->exitGame(); break;
-        case 2: _t->pauseGame(); break;
-        case 3: _t->resumeGame(); break;
-        case 4: _t->testMove(); break;
+        case 0: _t->slideLeft(); break;
+        case 1: _t->checkForAttact(); break;
+        case 2: _t->exitGame(); break;
+        case 3: _t->pauseGame(); break;
+        case 4: _t->resumeGame(); break;
         default: ;
         }
     }

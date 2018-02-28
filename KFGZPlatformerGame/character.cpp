@@ -101,7 +101,7 @@ void Character::move()
     {
         if (typeid(*(rightCollidingItems.at(i))) == typeid(Terrain)) //vane fal mellette
         {
-            qDebug() << rightCollidingItems[i]->scenePos().x() << " " << pos().x();
+            //() << rightCollidingItems[i]->scenePos().x() << " " << pos().x();
             if(rightCollidingItems[i]->scenePos().x()-100<pos().x())
             {
                 setPos(rightCollidingItems[i]->scenePos().x()-100, y());
@@ -127,7 +127,7 @@ void Character::move()
     if(goingRight && !wallRight)
         setPos(x()+(yVelocity == 0 && !slidingTimer->isActive() ? 0.4 : 0.25), y());
     if(goingLeft && !wallLeft)
-        setPos(x()-(yVelocity == 0 && !slidingTimer->isActive()  ? 0.4 : 0.25), y());
+        setPos(x()-(!slidingTimer->isActive()  ? 0.4 : 0.25), y());
     //ha erintkezik a folddel, akkor a yvelocity 0, ha esik, akkor negativ, ha ugrik akkr pozitiv
     setPos(x(), y()-yVelocity);
 }

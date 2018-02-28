@@ -13,5 +13,4 @@ INPUT(
 ./debug\moc_enemy.o
 ./debug\moc_Menu.o
 ./debug\moc_spearman.o
-./debug\moc_mapchunk.o
 );

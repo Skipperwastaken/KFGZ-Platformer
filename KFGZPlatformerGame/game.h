@@ -18,6 +18,7 @@
 #include <QVector>
 #include "enemy.h"
 #include "mapchunk.h"
+#include <QGraphicsProxyWidget>
 
 class Game: public QGraphicsView
 {
@@ -32,16 +33,17 @@ public:
 
     QPushButton * pauseB;
     QGraphicsPixmapItem * pauseMenu;
+    QGraphicsProxyWidget * resumeProxy;
     QPushButton * resumeB;
+    QGraphicsProxyWidget * settingProxy;
     QPushButton * settingB;
+    QGraphicsProxyWidget * exitProxy;
     QPushButton * exitB;
 
-    MapChunk chunk;
+    QVector<MapChunk> chunk;
     QTimer *mapSlideTimer;
     int mapSlideSpeed;
-    Terrain *wall;
 
-    Enemy *spearman;
     //timer ami alapjan az ellenfelek es a jatekos kozelseget nezi
     QTimer *checkForAttactT;
     int checkForAttackSpeed;
@@ -49,12 +51,11 @@ public:
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent * event);
 public slots:
+    void slideLeft();
     void checkForAttact();
-    //void createMapChunk(QVector<Terrain*> t, QVector<Enemy*> v, int ID);
     void exitGame();
     void pauseGame();
     void resumeGame();
-    void testMove();
 };
 
 #endif // GAME_H

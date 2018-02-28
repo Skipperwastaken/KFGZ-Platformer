@@ -19,8 +19,12 @@ public:
     QVector<Terrain*> terrains;
     QVector<Enemy*> enemies;
     void setParams(QGraphicsScene *scn, int lvl, QString thm);
-    void slideLeft();
+    void setParams(QGraphicsScene *scn, int lvl, QString thm, bool frst);
+    bool first=false;
     void createChunk();
+    void deleteChunk();
+public slots:
+    void slideLeft();
 };
 
 #endif // MAPCHUNK_H

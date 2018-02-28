@@ -13,5 +13,4 @@ INPUT(
 ./release\moc_enemy.o
 ./release\moc_Menu.o
 ./release\moc_spearman.o
-./release\moc_mapchunk.o
 );

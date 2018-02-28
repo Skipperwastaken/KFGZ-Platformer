@@ -12,7 +12,7 @@ Game::Game()
 
     // scene
     scene = new QGraphicsScene(this);
-    scene->setSceneRect(0,0,screenWidth-2,screenHeight-2);
+    scene->setSceneRect(0,0,screenWidth,screenHeight);
 
     //view, ez amit a jatekos lat
     setScene(scene);
@@ -20,54 +20,37 @@ Game::Game()
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(screenWidth,screenHeight);
 
-    //map balra mozgatasa
-    mapSlideTimer = new QTimer(this);
-    connect(mapSlideTimer, &QTimer::timeout,
-            this, &Game::testMove);
-
-
 
     // jatekos letrehozasa
     player = new Character;
     player->setPos(screenWidth/4,screenHeight/2);  //itt majd lesz rendes helye is
     scene->addItem(player);
 
-    //ideiglenes map teszt
-    chunk.setParams(scene, 1, "asd");
-    qDebug() << scene->items();
-    chunk.createChunk();
-    qDebug() << scene->items();
-    /*Terrain *ground = new Terrain(0, screenHeight*4/5, screenWidth, screenHeight/5, 1);
-    wall = new Terrain(0, 0, 100, 100, 2);
-    Terrain *bar = new Terrain(0, 0, 100, 100, 3);
-    Terrain *bar2 = new Terrain(0, 0, 100, 100, 4);
-    wall->setPos(screenWidth/2-250, screenHeight*4/5-100);
-    bar->setPos(screenWidth/2+50, screenHeight*4/5-200);
-    bar2->setPos(screenWidth/2+250, screenHeight*4/5-350);
-    scene->addItem(ground);
-    scene->addItem(wall);
-    scene->addItem(bar);
-    scene->addItem(bar2);
+    //map chunkok letrehozasa
+    MapChunk tmpMC;
+    for(int i = 0 ; i < 2; i++)
+        chunk.append(tmpMC);
+    chunk[0].setParams(scene, 0, "asd", true);
+    chunk[1].setParams(scene, 0, "asd");
+    for(int i = 0 ; i < 2; i++)
+        chunk[i].createChunk();
+    //map balra mozgatasa
+    mapSlideTimer = new QTimer(this);
+    connect(mapSlideTimer, &QTimer::timeout,
+        this, &Game::slideLeft);
+
     //ellenfelkereso timer
     checkForAttackSpeed=10;
     checkForAttactT = new QTimer(this);
     connect(checkForAttactT, &QTimer::timeout,
             this, &Game::checkForAttact);
     checkForAttactT->start(checkForAttackSpeed);
-    //ellenfel hozzadasa, szinten csak ideiglenes
-    //qDebug() << "1";
-    spearman = new SpearMan;
-    //qDebug() << "2";
-    spearman->setPos(screenWidth/2, screenHeight*4/5-400);
-    //qDebug() << "3";
-    scene->addItem(spearman);
-    //qDebug() << "4";*/
-
 
     //pause menu
     pauseMenu = new QGraphicsPixmapItem(QPixmap(":/images/images/pauseMenu.png").scaled(QSize(screenHeight*4/5, screenHeight*4/5)));
     scene->addItem(pauseMenu);
     pauseMenu->setPos(screenWidth/2-screenHeight*2/5, screenHeight/5);
+    pauseMenu->setZValue(10);
     pauseMenu->hide();
 
     pauseB = new QPushButton(QString("Pause"));
@@ -75,23 +58,32 @@ Game::Game()
     scene->addWidget(pauseB);
     connect(pauseB, &QAbstractButton::clicked,
             this, &Game::pauseGame);
+
     resumeB = new QPushButton(QString("Resume"));
-    scene->addWidget(resumeB);
-    resumeB->setGeometry(screenWidth/2-screenHeight/4, screenHeight*2/5, screenHeight/2, screenHeight/10);
+    resumeProxy = new QGraphicsProxyWidget(pauseMenu);
+    resumeProxy->setWidget(resumeB);
+    resumeB->setGeometry(screenHeight/10, screenHeight*4/30, screenHeight*6/10, screenHeight/10);
     resumeB->hide();
     connect(resumeB, &QAbstractButton::clicked,
             this, &Game::resumeGame);
 
+    settingB = new QPushButton(QString("Settings"));
+    settingProxy = new QGraphicsProxyWidget(pauseMenu);
+    settingProxy->setWidget(settingB);
+    settingB->setGeometry(screenHeight/10, screenHeight*8/30, screenHeight*6/10, screenHeight/10);
+    resumeB->hide();
+
     exitB = new QPushButton(QString("Exit"));
-    scene->addWidget(exitB);
-    exitB->setGeometry(screenWidth/2-screenHeight/4, screenHeight*3/5, screenHeight/2, screenHeight/10);
+    exitProxy = new QGraphicsProxyWidget(pauseMenu);
+    exitProxy->setWidget(exitB);
+    exitB->setGeometry(screenHeight/10, screenHeight*12/30, screenHeight*6/10, screenHeight/10);
     exitB->hide();
     connect(exitB, &QAbstractButton::clicked,
             this, &Game::exitGame);
 
     //ha minden elokeszulet kesz, megnyitjuk az ablakot, androidon nincs tálca, úgyhogy windowson is fullscreennel kell tesztelni
     showFullScreen();
-    mapSlideSpeed=100;
+    mapSlideSpeed=3;
     mapSlideTimer->start(mapSlideSpeed);
 }
 
@@ -141,12 +133,27 @@ void Game::keyReleaseEvent(QKeyEvent *event)
     }
 }
 
+void Game::slideLeft()
+{
+    for(int i=0; i < 2; i++)
+    {
+        chunk[i].slideLeft();
+    }
+}
+
 void Game::checkForAttact()
 {
-    if(std::abs(player->pos().y()-spearman->pos().y()) < 200 && std::abs(player->pos().x()-spearman->pos().x()) < 200)
+    for(int j=0; j < 2; j++)
     {
-        //qDebug() << "spearman close";
-        //spearman->prepAttack();
+        for(int i=0; i < chunk[j].enemies.length(); i++)
+        {
+            if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 200)
+            {
+                //qDebug() << "spearman close";
+                chunk[j].enemies.at(i)->prepAttack();
+
+            }
+        }
     }
 }
 
@@ -166,23 +173,20 @@ void Game::pauseGame()
     //TODO: ha mar elkezdodott egy attack, akkor azt nem pausolja
     pauseMenu->show();
     resumeB->show();
+    settingB->show();
     exitB->show();
     player->moveTimer->stop();
     mapSlideTimer->stop();
-    //checkForAttactT->stop();
+    checkForAttactT->stop();
 }
 
 void Game::resumeGame()
 {
     pauseMenu->hide();
     resumeB->hide();
+    settingB->show();
     exitB->hide();
     player->moveTimer->start(1);
     mapSlideTimer->start(mapSlideSpeed);
-    //checkForAttactT->start(checkForAttackSpeed);
-}
-
-void Game::testMove()
-{
-    //wall->setPos(wall->pos().x()-1, wall->pos().y());
+    checkForAttactT->start(checkForAttackSpeed);
 }
