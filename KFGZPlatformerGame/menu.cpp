@@ -37,13 +37,34 @@ Menu::Menu()
     shopButton = new QPushButton(QString("Shop"));
     shopButton->setGeometry(QRect(QPoint(screenWidth/30,screenHeight-(screenHeight/4)-2*(screenHeight/6)-2*(screenHeight/30)),QSize(screenWidth/3, screenHeight/6)));
     scene->addWidget(shopButton);
+    connect(shopButton, &QAbstractButton::clicked,
+            this, &Menu::openShop);
+
+    //shop back button
+    backShopButton = new QPushButton(QString("Back"));
+    backShopButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
+    scene->addWidget(backShopButton);
+    connect(backShopButton, &QAbstractButton::clicked,
+            this, &Menu::closeShop);
+    backShopButton->hide();
+
 
     //settings button
 
     settingsButton = new QPushButton(QString("Settings"));
     settingsButton->setGeometry(QRect(QPoint(screenWidth/30,screenHeight-(screenHeight/4)-(screenHeight/6)-(screenHeight/30)),QSize(screenWidth/3, screenHeight/6)));
     scene->addWidget(settingsButton);
+    connect(settingsButton, &QAbstractButton::clicked,
+            this, &Menu::openSettings);
 
+    //settings back button
+
+    backSettingsButton = new QPushButton(QString("Back"));
+    backSettingsButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
+    scene->addWidget(backSettingsButton);
+    connect(backSettingsButton, &QAbstractButton::clicked,
+            this, &Menu::closeSettings);
+    backSettingsButton->hide();
     //quit button
 
     quitButton = new QPushButton(QString("Quit"));
@@ -104,6 +125,41 @@ void Menu::startGame()
 void Menu::quitApp()
 {
     close();
+}
+
+void Menu::openShop()
+{
+    playButton->hide();
+    shopButton->hide();
+    settingsButton->hide();
+    quitButton->hide();
+    backShopButton->show();
+}
+
+void Menu::closeShop()
+{
+    playButton->show();
+    shopButton->show();
+    settingsButton->show();
+    quitButton->show();
+    backShopButton->hide();
+}
+void Menu::openSettings()
+{
+    playButton->hide();
+    shopButton->hide();
+    settingsButton->hide();
+    quitButton->hide();
+    backSettingsButton->show();
+}
+
+void Menu::closeSettings()
+{
+    playButton->show();
+    shopButton->show();
+    settingsButton->show();
+    quitButton->show();
+    backSettingsButton->hide();
 }
 
 void Menu::openGameModeSelect()
