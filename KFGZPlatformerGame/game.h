@@ -15,6 +15,10 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QGraphicsPixmapItem>
+#include <QVector>
+#include "enemy.h"
+#include "mapchunk.h"
+#include <QGraphicsProxyWidget>
 
 class Game: public QGraphicsView
 {
@@ -29,15 +33,17 @@ public:
 
     QPushButton * pauseB;
     QGraphicsPixmapItem * pauseMenu;
+    QGraphicsProxyWidget * resumeProxy;
     QPushButton * resumeB;
+    QGraphicsProxyWidget * settingProxy;
     QPushButton * settingB;
+    QGraphicsProxyWidget * exitProxy;
     QPushButton * exitB;
 
+    QVector<MapChunk> chunk;
     QTimer *mapSlideTimer;
     int mapSlideSpeed;
-    Terrain *wall;
 
-    SpearMan *spearman;
     //timer ami alapjan az ellenfelek es a jatekos kozelseget nezi
     QTimer *checkForAttactT;
     int checkForAttackSpeed;
@@ -45,11 +51,11 @@ public:
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent * event);
 public slots:
+    void slideLeft();
     void checkForAttact();
     void exitGame();
     void pauseGame();
     void resumeGame();
-    void testMove();
 };
 
 #endif // GAME_H
