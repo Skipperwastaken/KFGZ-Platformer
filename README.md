@@ -23,3 +23,8 @@
 * Count score, money
 ### Shop
 ![shop](readmeIMG/shop.jpg)   
+### Map
+* Map objects
+
+   Each unique object has an id, a texture, a height a width, and a type, which can be: terrain, pick up item and decoration   
+   Each map block has its items listed with an id, an x and a y location

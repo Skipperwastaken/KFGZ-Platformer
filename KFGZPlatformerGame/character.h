@@ -9,6 +9,8 @@
 #include <QTimer>
 #include <QList>
 #include <QPen>
+#include <enemy.h>
+#include <QGraphicsProxyWidget>
 
 
 class Character:public QObject, public QGraphicsRectItem

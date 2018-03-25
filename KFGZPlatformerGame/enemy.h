@@ -15,16 +15,18 @@ public:
     Enemy();
     QGraphicsPixmapItem *model;
     QGraphicsPixmapItem *attackHitBox;
-    QPixmap normalModel, prepModel, attackModel; //ideiglenes, kesobb lesznek animaciok
+    QPixmap normalModel, prepModel, attackModel, deadModel; //ideiglenes, kesobb lesznek animaciok
     QTimer *prepAttackT, *attackT, *attackCD;
     int prepTime;
     void setNormalModel(QString mdl);
+    bool dead=false;
 signals:
     void hit();
 public slots:
     void prepAttack(); //a kap jelet a karakter kozelsegere, akkor elkezd felkeszulni a tamadasra
     void attack();     //tamad, itt nezi h el talalta e
     void finishAttack(); // egy ideig kint van az atack hitbox, hogy lathato legyen, utana ez tuntei el
+    void die();
 };
 
 #endif // ENEMY_H

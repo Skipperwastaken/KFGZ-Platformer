@@ -24,7 +24,7 @@ class Game: public QGraphicsView
 {
     Q_OBJECT
 public:
-    Game();
+    Game(QWidget *parent=0);
     ~Game();
 
     QGraphicsScene * scene;

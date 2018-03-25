@@ -27,6 +27,7 @@ public:
     QPushButton * storyGameButton;
     //Story mode buttons:
     QPushButton * backStoryModeButton;
+    QGraphicsProxyWidget *gameProxy;
     Game * game;
 
 public slots:

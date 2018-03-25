@@ -98,6 +98,9 @@ Menu::~Menu()
 void Menu::startGame()
 {
     game = new Game;
+    /* TODO gameProxy = new QGraphicsProxyWidget(scene);
+    gameProxy->setWidget(game);
+    gameProxy->setZValue(10);*/
     game->setAttribute(Qt::WA_DeleteOnClose);
 }
 

@@ -273,15 +273,19 @@ debug/moc_game.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGr
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbasictimer.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QList \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
+		../KFGZPlatformerGame/enemy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QPushButton \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qicon.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
 		../KFGZPlatformerGame/spearman.h \
-		../KFGZPlatformerGame/enemy.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/terrain.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
@@ -411,6 +415,17 @@ debug/moc_character.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidget
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpen.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qbrush.h \
+		../KFGZPlatformerGame/enemy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../KFGZPlatformerGame/character.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
 		../KFGZPlatformerGame/character.h \
 		debug/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -526,6 +541,14 @@ debug/moc_enemy.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QG
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpen.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qbrush.h \
+		../KFGZPlatformerGame/enemy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
 		../KFGZPlatformerGame/enemy.h \
 		debug/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -668,11 +691,15 @@ debug/moc_Menu.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGr
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbasictimer.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QList \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
-		../KFGZPlatformerGame/spearman.h \
 		../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
+		../KFGZPlatformerGame/spearman.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/terrain.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
@@ -806,6 +833,13 @@ debug/moc_spearman.cpp: ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpen.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qbrush.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/spearman.h \
 		debug/moc_predefs.h \
@@ -975,11 +1009,15 @@ debug/main.o: ../KFGZPlatformerGame/main.cpp ../../../Programs/Qt/5.10.0/mingw53
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbasictimer.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QList \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
-		../KFGZPlatformerGame/spearman.h \
 		../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
+		../KFGZPlatformerGame/spearman.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/terrain.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
@@ -1121,15 +1159,19 @@ debug/game.o: ../KFGZPlatformerGame/game.cpp ../KFGZPlatformerGame/game.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbasictimer.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QList \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
+		../KFGZPlatformerGame/enemy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QPushButton \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qicon.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
 		../KFGZPlatformerGame/spearman.h \
-		../KFGZPlatformerGame/enemy.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/terrain.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
@@ -1257,9 +1299,18 @@ debug/character.o: ../KFGZPlatformerGame/character.cpp ../KFGZPlatformerGame/cha
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpen.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qbrush.h \
+		../KFGZPlatformerGame/enemy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
 		../KFGZPlatformerGame/terrain.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\character.o ..\KFGZPlatformerGame\character.cpp
 
 debug/terrain.o: ../KFGZPlatformerGame/terrain.cpp ../KFGZPlatformerGame/terrain.h \
@@ -1466,7 +1517,14 @@ debug/enemy.o: ../KFGZPlatformerGame/enemy.cpp ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qtouchdevice.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpen.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qbrush.h
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qbrush.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\enemy.o ..\KFGZPlatformerGame\enemy.cpp
 
 debug/Menu.o: ../KFGZPlatformerGame/Menu.cpp ../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QGuiApplication \
@@ -1620,10 +1678,14 @@ debug/Menu.o: ../KFGZPlatformerGame/Menu.cpp ../../../Programs/Qt/5.10.0/mingw53
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbasictimer.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QList \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
-		../KFGZPlatformerGame/spearman.h \
 		../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPixmap \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
+		../KFGZPlatformerGame/spearman.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/terrain.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
@@ -1745,6 +1807,13 @@ debug/spearman.o: ../KFGZPlatformerGame/spearman.cpp ../KFGZPlatformerGame/spear
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpen.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qbrush.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\spearman.o ..\KFGZPlatformerGame\spearman.cpp
 
@@ -1864,10 +1933,16 @@ debug/mapchunk.o: ../KFGZPlatformerGame/mapchunk.cpp ../KFGZPlatformerGame/mapch
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qtouchdevice.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QPen \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpen.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsProxyWidget \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
 		../KFGZPlatformerGame/spearman.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsScene \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsscene.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mapchunk.o ..\KFGZPlatformerGame\mapchunk.cpp
 
 debug/qrc_res.o: debug/qrc_res.cpp 

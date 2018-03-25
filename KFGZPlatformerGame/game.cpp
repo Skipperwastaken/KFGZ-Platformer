@@ -1,6 +1,6 @@
 #include "game.h"
 
-Game::Game()
+Game::Game(QWidget *parent): QGraphicsView(parent)
 {
 
     /*elmentjuk a kepernyo magassagat es szelesseget, ez fontos, mert nem minden telon ugyanaz,
@@ -147,11 +147,25 @@ void Game::checkForAttact()
     {
         for(int i=0; i < chunk[j].enemies.length(); i++)
         {
-            if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 200)
+            if(!chunk.at(j).enemies.at(i)->dead)
             {
-                //qDebug() << "spearman close";
-                chunk[j].enemies.at(i)->prepAttack();
+                if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 200)
+                {
+                    QList<QGraphicsItem*> enemyCollisions = chunk.at(j).enemies.at(i)->model->collidingItems();
+                    for (int w = 0, n = enemyCollisions.size(); w < n; ++w)
+                    {
 
+                        if (typeid(*(enemyCollisions.at(w))) == typeid(Character))
+                        {
+                            //qDebug() << "player hits someone";
+                            chunk[j].enemies[i]->die();
+                            //TODO: player attack animation
+                            return;
+                        }
+                    }
+                    //qDebug() << "spearman close";
+                    chunk[j].enemies.at(i)->prepAttack();
+                }
             }
         }
     }
