@@ -38,8 +38,16 @@ Menu::Menu()
     shopButton->setGeometry(QRect(QPoint(screenWidth/30,screenHeight-(screenHeight/4)-2*(screenHeight/6)-2*(screenHeight/30)),QSize(screenWidth/3, screenHeight/6)));
     scene->addWidget(shopButton);
     connect(shopButton, &QAbstractButton::clicked,
-    this, &Menu::openShop);
-    shopButton->show();
+            this, &Menu::openShop);
+
+    //shop back button
+    backShopButton = new QPushButton(QString("Back"));
+    backShopButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
+    scene->addWidget(backShopButton);
+    connect(backShopButton, &QAbstractButton::clicked,
+            this, &Menu::closeShop);
+    backShopButton->hide();
+
 
     //settings button
 
@@ -47,9 +55,16 @@ Menu::Menu()
     settingsButton->setGeometry(QRect(QPoint(screenWidth/30,screenHeight-(screenHeight/4)-(screenHeight/6)-(screenHeight/30)),QSize(screenWidth/3, screenHeight/6)));
     scene->addWidget(settingsButton);
     connect(settingsButton, &QAbstractButton::clicked,
-    this, &Menu::openSettings);
-    settingsButton->show();
+            this, &Menu::openSettings);
 
+    //settings back button
+
+    backSettingsButton = new QPushButton(QString("Back"));
+    backSettingsButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
+    scene->addWidget(backSettingsButton);
+    connect(backSettingsButton, &QAbstractButton::clicked,
+            this, &Menu::closeSettings);
+    backSettingsButton->hide();
     //quit button
 
     quitButton = new QPushButton(QString("Quit"));
@@ -91,121 +106,6 @@ Menu::Menu()
             this, &Menu::closeStoryMode);
     backStoryModeButton->hide();
 
-    //Inside shop buttons
-    //Shop back button
-    backShopButton = new QPushButton(QString("Back"));
-    backShopButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
-    scene->addWidget(backShopButton);
-    connect(backShopButton, &QAbstractButton::clicked,
-            this, &Menu::closeShop);
-    backShopButton->hide();
-
-    //Helmet left button
-    leftHelmetButton = new QPushButton(QString("<"));
-    leftHelmetButton->setGeometry(screenWidth/1.5, screenHeight/20*3, screenHeight/20, screenHeight/20);
-    scene->addWidget(leftHelmetButton);
-
-
-    leftHelmetButton->hide();
-
-    //Helmet right button
-    rightHelmetButton = new QPushButton(QString(">"));
-    rightHelmetButton->setGeometry(screenWidth/1.2, screenHeight/20*3, screenHeight/20, screenHeight/20);
-    scene->addWidget(rightHelmetButton);
-
-
-    rightHelmetButton->hide();
-
-   //Bodyarmor left button
-   leftChestButton = new QPushButton(QString("<"));
-   leftChestButton->setGeometry(screenWidth/1.5, screenHeight/20*6, screenHeight/20, screenHeight/20);
-   scene->addWidget(leftChestButton);
-
-
-   leftChestButton->hide();
-
-   //Bodyarmor right button
-   rightChestButton = new QPushButton(QString(">"));
-   rightChestButton->setGeometry(screenWidth/1.2, screenHeight/20*6, screenHeight/20, screenHeight/20);
-   scene->addWidget(rightChestButton);
-
-
-   rightChestButton->hide();
-
-
-    //Gloves left button
-    leftGlovesButton = new QPushButton(QString("<"));
-    leftGlovesButton->setGeometry(screenWidth/1.5, screenHeight/20*9, screenHeight/20, screenHeight/20);
-    scene->addWidget(leftGlovesButton);
-
-
-    leftGlovesButton->hide();
-
-    //Gloves right button
-    rightGlovesButton = new QPushButton(QString(">"));
-    rightGlovesButton->setGeometry(screenWidth/1.2, screenHeight/20*9, screenHeight/20, screenHeight/20);
-    scene->addWidget(rightGlovesButton);
-
-
-    rightGlovesButton->hide();
-
-    //Pants left button
-    leftPantsButton = new QPushButton(QString("<"));
-    leftPantsButton->setGeometry(screenWidth/1.5, screenHeight/20*12, screenHeight/20, screenHeight/20);
-    scene->addWidget(leftPantsButton);
-
-
-    leftPantsButton->hide();
-
-    //Pants right button
-    rightPantsButton = new QPushButton(QString(">"));
-    rightPantsButton->setGeometry(screenWidth/1.2, screenHeight/20*12, screenHeight/20, screenHeight/20);
-    scene->addWidget(rightPantsButton);
-
-
-    rightPantsButton->hide();
-
-    //Shoes left button
-    leftShoesButton = new QPushButton(QString("<"));
-    leftShoesButton->setGeometry(screenWidth/1.5, screenHeight/20*15, screenHeight/20, screenHeight/20);
-    scene->addWidget(leftShoesButton);
-
-
-    leftShoesButton->hide();
-
-    //Shoes right button
-    rightShoesButton = new QPushButton(QString(">"));
-    rightShoesButton->setGeometry(screenWidth/1.2, screenHeight/20*15, screenHeight/20, screenHeight/20);
-    scene->addWidget(rightShoesButton);
-
-
-    rightShoesButton->hide();
-
-    //Weapons left button
-    leftWeaponButton = new QPushButton(QString("<"));
-    leftWeaponButton->setGeometry(screenWidth/1.5, screenHeight/20*18, screenHeight/20, screenHeight/20);
-    scene->addWidget(leftWeaponButton);
-
-
-    leftWeaponButton->hide();
-
-    //Weapons right button
-    rightWeaponButton = new QPushButton(QString(">"));
-    rightWeaponButton->setGeometry(screenWidth/1.2, screenHeight/20*18, screenHeight/20, screenHeight/20);
-    scene->addWidget(rightWeaponButton);
-
-
-    rightWeaponButton->hide();
-
-
-    //Settings back button
-    backSettingsButton = new QPushButton(QString("Back"));
-    backSettingsButton->setGeometry(10, 10, screenHeight/10, screenHeight/10);
-    scene->addWidget(backSettingsButton);
-    connect(backSettingsButton, &QAbstractButton::clicked,
-            this, &Menu::closeShop);
-    backSettingsButton->hide();
-
     //fullscreen
 
     showFullScreen();
@@ -227,6 +127,41 @@ void Menu::quitApp()
     close();
 }
 
+void Menu::openShop()
+{
+    playButton->hide();
+    shopButton->hide();
+    settingsButton->hide();
+    quitButton->hide();
+    backShopButton->show();
+}
+
+void Menu::closeShop()
+{
+    playButton->show();
+    shopButton->show();
+    settingsButton->show();
+    quitButton->show();
+    backShopButton->hide();
+}
+void Menu::openSettings()
+{
+    playButton->hide();
+    shopButton->hide();
+    settingsButton->hide();
+    quitButton->hide();
+    backSettingsButton->show();
+}
+
+void Menu::closeSettings()
+{
+    playButton->show();
+    shopButton->show();
+    settingsButton->show();
+    quitButton->show();
+    backSettingsButton->hide();
+}
+
 void Menu::openGameModeSelect()
 {
     playButton->hide();
@@ -236,80 +171,9 @@ void Menu::openGameModeSelect()
     backButton->show();
     endlessGameButton->show();
     storyGameButton->show();
-
 }
 
 void Menu::closeGameModeSelect()
-{
-    playButton->show();
-    shopButton->show();
-    settingsButton->show();
-    quitButton->show();
-    backButton->hide();
-    endlessGameButton->hide();
-    storyGameButton->hide();
-    leftHelmetButton->hide();
-    leftChestButton->hide();
-    leftGlovesButton->hide();
-    leftPantsButton->hide();
-    leftShoesButton->hide();
-    leftWeaponButton->hide();
-    rightHelmetButton->hide();
-    rightChestButton->hide();
-    rightGlovesButton->hide();
-    rightPantsButton->hide();
-    rightShoesButton->hide();
-    rightWeaponButton->hide();
-}
-
-void Menu::openShop()
-{
-    playButton->hide();
-    shopButton->hide();
-    settingsButton->hide();
-    quitButton->hide();
-    backButton->show();
-    endlessGameButton->hide();
-    storyGameButton->hide();
-    leftHelmetButton->show();
-    leftChestButton->show();
-    leftGlovesButton->show();
-    leftPantsButton->show();
-    leftShoesButton->show();
-    leftWeaponButton->show();
-    rightHelmetButton->show();
-    rightChestButton->show();
-    rightGlovesButton->show();
-    rightPantsButton->show();
-    rightShoesButton->show();
-    rightWeaponButton->show();
-}
-
-void Menu::closeShop()
-{
-    playButton->show();
-    shopButton->show();
-    settingsButton->show();
-    quitButton->show();
-    backButton->hide();
-    endlessGameButton->hide();
-    storyGameButton->hide();
-
-}
-
-void Menu::openSettings()
-{
-    playButton->hide();
-    shopButton->hide();
-    settingsButton->hide();
-    quitButton->hide();
-    backButton->show();
-    endlessGameButton->hide();
-    storyGameButton->hide();
-
-}
-
-void Menu::closeSettings()
 {
     playButton->show();
     shopButton->show();
@@ -335,4 +199,3 @@ void Menu::closeStoryMode()
     storyGameButton->show();
     backStoryModeButton->hide();
 }
-

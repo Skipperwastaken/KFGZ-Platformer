@@ -20,44 +20,33 @@ public:
     QPushButton * playButton;
     QPushButton * shopButton;
     QPushButton * settingsButton;
-    QPushButton * backSettingsButton;
     QPushButton * quitButton;
+    //Shop buttons:
+    QPushButton * backShopButton;
+    //Settings buttons:
+    QPushButton * backSettingsButton;
     //Game mode select buttons:
     QPushButton * backButton;
     QPushButton * endlessGameButton;
     QPushButton * storyGameButton;
     //Story mode buttons:
     QPushButton * backStoryModeButton;
-    //Shop buttons
-    QPushButton * backShopButton;
-    QPushButton * leftHelmetButton;
-    QPushButton * leftChestButton;
-    QPushButton * leftGlovesButton;
-    QPushButton * leftPantsButton;
-    QPushButton * leftShoesButton;
-    QPushButton * leftWeaponButton;
-    QPushButton * rightHelmetButton;
-    QPushButton * rightChestButton;
-    QPushButton * rightGlovesButton;
-    QPushButton * rightPantsButton;
-    QPushButton * rightShoesButton;
-    QPushButton * rightWeaponButton;
+    QPushButton * stage1Button;
+    QPushButton * workInProgressButton;
     Game * game;
 
 public slots:
     void startGame();
     void quitApp();
-    void openGameModeSelect();
-    void closeGameModeSelect();
     void openShop();
     void closeShop();
     void openSettings();
     void closeSettings();
+    void openGameModeSelect();
+    void closeGameModeSelect();
     void openStoryMode();
     void closeStoryMode();
-
 };
-
 
 
 #endif // MENU_H
