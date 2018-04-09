@@ -85,6 +85,13 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     showFullScreen();
     mapSlideSpeed=3;
     mapSlideTimer->start(mapSlideSpeed);
+    setViewportUpdateMode(NoViewportUpdate);
+
+    screenUpdateT = new QTimer(this);
+    fps=60;
+    screenUpdateT->start(1000/fps);
+    connect(screenUpdateT, &QTimer::timeout,
+            this, &Game::updateScreen);
 }
 
 //jatekos iranyitasa, lehetne a character classban is, de ott nehezebb bug mentesre megcsinalni
@@ -93,7 +100,7 @@ void Game::keyPressEvent(QKeyEvent *event)
     if (event->key() == Qt::Key_W){
         if(!event->isAutoRepeat() && player->jumpsLeft>0)
         {
-            player->yVelocity=0.6;
+            player->yVelocity=6;
             player->jumpsLeft--;
         }
         player->jumping=true;
@@ -131,6 +138,11 @@ void Game::keyReleaseEvent(QKeyEvent *event)
         player->sliding=false;
         //qDebug() << "Slide key released";
     }
+}
+
+void Game::updateScreen()
+{
+    scene->update();
 }
 
 void Game::slideLeft()

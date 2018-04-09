@@ -29,7 +29,6 @@ public:
     bool goingLeft=false, goingRight=false, wallRight=false, wallLeft=false; //levane nyomva egy gomb, amivel oldalra megy a karakter
     bool sliding=false;
     QTimer *slidingTimer, *slidingCD; //ido, ameddig csuszik es amig ujra csuszhat
-
 public slots:
     void move();
     void stopSliding();
