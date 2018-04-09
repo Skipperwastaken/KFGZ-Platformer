@@ -24,6 +24,8 @@ void Enemy::setNormalModel(QString mdl)
 
 void Enemy::prepAttack()
 {
+    if(dead)
+        return;
     if(!prepAttackT->isActive() && !attackT->isActive() && !attackCD->isActive())
     {
         model->setPixmap(prepModel);
@@ -33,6 +35,8 @@ void Enemy::prepAttack()
 
 void Enemy::attack()
 {
+    if(dead)
+        return;
     qDebug() << "attack";
     model->setPixmap(attackModel);
     attackHitBox->show();
@@ -51,8 +55,21 @@ void Enemy::attack()
 
 void Enemy::finishAttack()
 {
+    if(dead)
+        return;
     qDebug() << "finish attack";
     attackHitBox->hide();
     model->setPixmap(normalModel);
     attackCD->start(2000);
+}
+
+void Enemy::die()
+{
+    //TODO: halal animacio
+    dead=true;
+    //model->setPixmap(deadModel);
+    prepAttackT->stop();
+    attackT->stop();
+    attackCD->stop();
+    qDebug() << "ded";
 }

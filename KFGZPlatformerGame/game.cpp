@@ -1,6 +1,6 @@
 #include "game.h"
 
-Game::Game()
+Game::Game(QWidget *parent): QGraphicsView(parent)
 {
 
     /*elmentjuk a kepernyo magassagat es szelesseget, ez fontos, mert nem minden telon ugyanaz,
@@ -85,6 +85,13 @@ Game::Game()
     showFullScreen();
     mapSlideSpeed=3;
     mapSlideTimer->start(mapSlideSpeed);
+    setViewportUpdateMode(NoViewportUpdate);
+
+    screenUpdateT = new QTimer(this);
+    fps=60;
+    screenUpdateT->start(1000/fps);
+    connect(screenUpdateT, &QTimer::timeout,
+            this, &Game::updateScreen);
 }
 
 //jatekos iranyitasa, lehetne a character classban is, de ott nehezebb bug mentesre megcsinalni
@@ -93,7 +100,7 @@ void Game::keyPressEvent(QKeyEvent *event)
     if (event->key() == Qt::Key_W){
         if(!event->isAutoRepeat() && player->jumpsLeft>0)
         {
-            player->yVelocity=0.6;
+            player->yVelocity=6;
             player->jumpsLeft--;
         }
         player->jumping=true;
@@ -133,6 +140,11 @@ void Game::keyReleaseEvent(QKeyEvent *event)
     }
 }
 
+void Game::updateScreen()
+{
+    scene->update();
+}
+
 void Game::slideLeft()
 {
     for(int i=0; i < 2; i++)
@@ -147,11 +159,25 @@ void Game::checkForAttact()
     {
         for(int i=0; i < chunk[j].enemies.length(); i++)
         {
-            if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 200)
+            if(!chunk.at(j).enemies.at(i)->dead)
             {
-                //qDebug() << "spearman close";
-                chunk[j].enemies.at(i)->prepAttack();
+                if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 200)
+                {
+                    QList<QGraphicsItem*> enemyCollisions = chunk.at(j).enemies.at(i)->model->collidingItems();
+                    for (int w = 0, n = enemyCollisions.size(); w < n; ++w)
+                    {
 
+                        if (typeid(*(enemyCollisions.at(w))) == typeid(Character))
+                        {
+                            //qDebug() << "player hits someone";
+                            chunk[j].enemies[i]->die();
+                            //TODO: player attack animation
+                            return;
+                        }
+                    }
+                    //qDebug() << "spearman close";
+                    chunk[j].enemies.at(i)->prepAttack();
+                }
             }
         }
     }

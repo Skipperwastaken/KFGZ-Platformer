@@ -24,7 +24,7 @@ class Game: public QGraphicsView
 {
     Q_OBJECT
 public:
-    Game();
+    Game(QWidget *parent=0);
     ~Game();
 
     QGraphicsScene * scene;
@@ -50,7 +50,12 @@ public:
 
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent * event);
+
+    //fps
+    QTimer *screenUpdateT;
+    int fps;
 public slots:
+    void updateScreen();
     void slideLeft();
     void checkForAttact();
     void exitGame();
