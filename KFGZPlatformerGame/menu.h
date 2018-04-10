@@ -21,6 +21,10 @@ public:
     QPushButton * shopButton;
     QPushButton * settingsButton;
     QPushButton * quitButton;
+    //Shop buttons:
+    QPushButton * backShopButton;
+    //Settings buttons:
+    QPushButton * backSettingsButton;
     //Game mode select buttons:
     QPushButton * backButton;
     QPushButton * endlessGameButton;
@@ -33,6 +37,10 @@ public:
 public slots:
     void startGame();
     void quitApp();
+    void openShop();
+    void closeShop();
+    void openSettings();
+    void closeSettings();
     void openGameModeSelect();
     void closeGameModeSelect();
     void openStoryMode();

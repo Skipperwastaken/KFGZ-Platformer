@@ -38,7 +38,7 @@ void MapChunk::createChunk()
 {
     terrains.append(new Terrain(0, 0, screenWidth, screenHeight/5, 1));
     terrains.append(new Terrain(0, 0, screenHeight/10, screenHeight/10, 1));
-    enemies.append(new SpearMan);
+    enemies.append(new FireWizard);
 
     terrains[0]->setPos(0+(first ? 0 : screenWidth), screenHeight*4/5);
     terrains[1]->setPos(screenWidth/3+(first ? 0 : screenWidth), screenHeight*7/10);

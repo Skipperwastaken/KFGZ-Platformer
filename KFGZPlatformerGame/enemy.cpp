@@ -53,6 +53,7 @@ void Enemy::attack()
     attackT->start(500);
 }
 
+
 void Enemy::finishAttack()
 {
     if(dead)

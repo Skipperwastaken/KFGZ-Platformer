@@ -34,7 +34,10 @@ SOURCES += \
     spearman.cpp \
     mapchunk.cpp \
     chunkdata.cpp \
-    terraindata.cpp
+    terraindata.cpp \
+    swordsman.cpp \
+    assassin.cpp \
+    earthwizard.cpp
 
 HEADERS += \
     game.h \
@@ -44,8 +47,11 @@ HEADERS += \
     Menu.h \
     spearman.h \
     mapchunk.h \
+    terraindata.h \
     chunkdata.h \
-    terraindata.h
+    swordsman.h \
+    assassin.h \
+    earthwizard.h
 
 FORMS +=
 

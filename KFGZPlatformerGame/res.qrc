@@ -6,5 +6,9 @@
         <file>images/enemies/spearMan/spearmanPrep.png</file>
         <file>images/enemies/spearMan/spearmanHitbox.png</file>
         <file>images/pauseMenu.png</file>
+        <file>images/enemies/fireWizard/fireBall.png</file>
+        <file>images/enemies/fireWizard/fireWizard.png</file>
+        <file>images/enemies/fireWizard/fireWizardAttack.png</file>
+        <file>images/enemies/fireWizard/fireWizardPrep.png</file>
     </qresource>
 </RCC>

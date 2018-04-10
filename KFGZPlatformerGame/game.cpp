@@ -161,7 +161,7 @@ void Game::checkForAttact()
         {
             if(!chunk.at(j).enemies.at(i)->dead)
             {
-                if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 200)
+                if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 1000)
                 {
                     QList<QGraphicsItem*> enemyCollisions = chunk.at(j).enemies.at(i)->model->collidingItems();
                     for (int w = 0, n = enemyCollisions.size(); w < n; ++w)
@@ -175,7 +175,6 @@ void Game::checkForAttact()
                             return;
                         }
                     }
-                    //qDebug() << "spearman close";
                     chunk[j].enemies.at(i)->prepAttack();
                 }
             }
