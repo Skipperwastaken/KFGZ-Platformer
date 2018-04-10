@@ -32,7 +32,10 @@ SOURCES += \
     enemy.cpp \
     Menu.cpp \
     spearman.cpp \
-    mapchunk.cpp
+    mapchunk.cpp \
+    swordsman.cpp \
+    assassin.cpp \
+    earthwizard.cpp
 
 HEADERS += \
     game.h \
@@ -41,7 +44,10 @@ HEADERS += \
     enemy.h \
     Menu.h \
     spearman.h \
-    mapchunk.h
+    mapchunk.h \
+    swordsman.h \
+    assassin.h \
+    earthwizard.h
 
 FORMS +=
 
