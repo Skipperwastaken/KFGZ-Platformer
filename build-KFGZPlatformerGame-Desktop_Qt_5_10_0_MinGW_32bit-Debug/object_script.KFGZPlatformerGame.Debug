@@ -7,6 +7,8 @@ INPUT(
 ./debug\Menu.o
 ./debug\spearman.o
 ./debug\mapchunk.o
+./debug\chunkdata.o
+./debug\terraindata.o
 ./debug\qrc_res.o
 ./debug\moc_game.o
 ./debug\moc_character.o

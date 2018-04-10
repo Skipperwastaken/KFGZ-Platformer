@@ -32,7 +32,9 @@ SOURCES += \
     enemy.cpp \
     Menu.cpp \
     spearman.cpp \
-    mapchunk.cpp
+    mapchunk.cpp \
+    chunkdata.cpp \
+    terraindata.cpp
 
 HEADERS += \
     game.h \
@@ -41,7 +43,9 @@ HEADERS += \
     enemy.h \
     Menu.h \
     spearman.h \
-    mapchunk.h
+    mapchunk.h \
+    chunkdata.h \
+    terraindata.h
 
 FORMS +=
 

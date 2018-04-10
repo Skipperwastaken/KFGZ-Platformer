@@ -85,13 +85,13 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     showFullScreen();
     mapSlideSpeed=3;
     mapSlideTimer->start(mapSlideSpeed);
-    setViewportUpdateMode(NoViewportUpdate);
 
-    screenUpdateT = new QTimer(this);
-    fps=60;
-    screenUpdateT->start(1000/fps);
-    connect(screenUpdateT, &QTimer::timeout,
-            this, &Game::updateScreen);
+    //setViewportUpdateMode(NoViewportUpdate);
+    //screenUpdateT = new QTimer(this);
+    //fps=60;
+    //screenUpdateT->start(1000/fps);
+    //connect(screenUpdateT, &QTimer::timeout,
+    //        this, &Game::updateScreen);
 }
 
 //jatekos iranyitasa, lehetne a character classban is, de ott nehezebb bug mentesre megcsinalni

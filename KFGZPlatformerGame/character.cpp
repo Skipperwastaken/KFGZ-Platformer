@@ -55,9 +55,12 @@ void Character::move()
         {
             //eses megallitasa
             yVelocity = (yVelocity < 0 ? 0 : yVelocity);
-            if(bottomCollidingItems[i]->scenePos().y()+200<pos().y())
+            int tempNum=bottomCollidingItems[i]->scenePos().y();
+            qDebug() << tempNum << " " << pos().y()+200;
+            if(tempNum<pos().y()+200)
             {
-                setPos(x(), bottomCollidingItems[i]->scenePos().y()+200);
+                qDebug() << "in ground";
+                setPos(x(), tempNum-200);
             }
             //ha leer a foldre akkor ugorhat ujra
             jumpsLeft =1;
@@ -112,7 +115,6 @@ void Character::move()
             }
         }
     }
-
 
     if(goingLeft)
     {

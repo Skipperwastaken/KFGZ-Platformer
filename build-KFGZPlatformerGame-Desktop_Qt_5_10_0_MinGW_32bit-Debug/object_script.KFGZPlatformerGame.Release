@@ -7,6 +7,8 @@ INPUT(
 ./release\Menu.o
 ./release\spearman.o
 ./release\mapchunk.o
+./release\chunkdata.o
+./release\terraindata.o
 ./release\qrc_res.o
 ./release\moc_game.o
 ./release\moc_character.o
