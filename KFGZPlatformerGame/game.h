@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <cmath>
 #include "spearman.h"
+#include "firewziard.h"
 #include "terrain.h"
 #include <QDebug>
 #include <QGuiApplication>

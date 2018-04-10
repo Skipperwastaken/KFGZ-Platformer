@@ -5,6 +5,7 @@
 #include "terrain.h"
 #include "enemy.h"
 #include "spearman.h"
+#include "firewziard.h"
 #include <QDebug>
 #include <QGraphicsScene>
 
