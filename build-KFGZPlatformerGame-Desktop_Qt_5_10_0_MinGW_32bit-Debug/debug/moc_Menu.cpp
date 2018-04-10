@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Menu_t {
-    QByteArrayData data[8];
-    char stringdata0[92];
+    QByteArrayData data[12];
+    char stringdata0[138];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,15 +35,20 @@ QT_MOC_LITERAL(0, 0, 4), // "Menu"
 QT_MOC_LITERAL(1, 5, 9), // "startGame"
 QT_MOC_LITERAL(2, 15, 0), // ""
 QT_MOC_LITERAL(3, 16, 7), // "quitApp"
-QT_MOC_LITERAL(4, 24, 18), // "openGameModeSelect"
-QT_MOC_LITERAL(5, 43, 19), // "closeGameModeSelect"
-QT_MOC_LITERAL(6, 63, 13), // "openStoryMode"
-QT_MOC_LITERAL(7, 77, 14) // "closeStoryMode"
+QT_MOC_LITERAL(4, 24, 8), // "openShop"
+QT_MOC_LITERAL(5, 33, 9), // "closeShop"
+QT_MOC_LITERAL(6, 43, 12), // "openSettings"
+QT_MOC_LITERAL(7, 56, 13), // "closeSettings"
+QT_MOC_LITERAL(8, 70, 18), // "openGameModeSelect"
+QT_MOC_LITERAL(9, 89, 19), // "closeGameModeSelect"
+QT_MOC_LITERAL(10, 109, 13), // "openStoryMode"
+QT_MOC_LITERAL(11, 123, 14) // "closeStoryMode"
 
     },
-    "Menu\0startGame\0\0quitApp\0openGameModeSelect\0"
-    "closeGameModeSelect\0openStoryMode\0"
-    "closeStoryMode"
+    "Menu\0startGame\0\0quitApp\0openShop\0"
+    "closeShop\0openSettings\0closeSettings\0"
+    "openGameModeSelect\0closeGameModeSelect\0"
+    "openStoryMode\0closeStoryMode"
 };
 #undef QT_MOC_LITERAL
 
@@ -53,7 +58,7 @@ static const uint qt_meta_data_Menu[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -61,14 +66,22 @@ static const uint qt_meta_data_Menu[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x0a /* Public */,
-       3,    0,   45,    2, 0x0a /* Public */,
-       4,    0,   46,    2, 0x0a /* Public */,
-       5,    0,   47,    2, 0x0a /* Public */,
-       6,    0,   48,    2, 0x0a /* Public */,
-       7,    0,   49,    2, 0x0a /* Public */,
+       1,    0,   64,    2, 0x0a /* Public */,
+       3,    0,   65,    2, 0x0a /* Public */,
+       4,    0,   66,    2, 0x0a /* Public */,
+       5,    0,   67,    2, 0x0a /* Public */,
+       6,    0,   68,    2, 0x0a /* Public */,
+       7,    0,   69,    2, 0x0a /* Public */,
+       8,    0,   70,    2, 0x0a /* Public */,
+       9,    0,   71,    2, 0x0a /* Public */,
+      10,    0,   72,    2, 0x0a /* Public */,
+      11,    0,   73,    2, 0x0a /* Public */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -87,10 +100,14 @@ void Menu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         switch (_id) {
         case 0: _t->startGame(); break;
         case 1: _t->quitApp(); break;
-        case 2: _t->openGameModeSelect(); break;
-        case 3: _t->closeGameModeSelect(); break;
-        case 4: _t->openStoryMode(); break;
-        case 5: _t->closeStoryMode(); break;
+        case 2: _t->openShop(); break;
+        case 3: _t->closeShop(); break;
+        case 4: _t->openSettings(); break;
+        case 5: _t->closeSettings(); break;
+        case 6: _t->openGameModeSelect(); break;
+        case 7: _t->closeGameModeSelect(); break;
+        case 8: _t->openStoryMode(); break;
+        case 9: _t->closeStoryMode(); break;
         default: ;
         }
     }
@@ -122,13 +139,13 @@ int Menu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 10;
     }
     return _id;
 }

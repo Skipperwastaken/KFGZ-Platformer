@@ -37,7 +37,8 @@ SOURCES += \
     terraindata.cpp \
     swordsman.cpp \
     assassin.cpp \
-    earthwizard.cpp
+    earthwizard.cpp \
+    firewizard.cpp
 
 HEADERS += \
     game.h \
@@ -51,7 +52,8 @@ HEADERS += \
     chunkdata.h \
     swordsman.h \
     assassin.h \
-    earthwizard.h
+    earthwizard.h \
+    firewziard.h
 
 FORMS +=
 
