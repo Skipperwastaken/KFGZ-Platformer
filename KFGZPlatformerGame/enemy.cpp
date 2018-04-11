@@ -67,6 +67,7 @@ void Enemy::finishAttack()
 void Enemy::die()
 {
     model->setPixmap(deadModel);
+    attackHitBox->hide();
     dead=true;
     //model->setPixmap(deadModel);
     prepAttackT->stop();

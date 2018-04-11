@@ -1,6 +1,7 @@
 #include "character.h"
 #include "terrain.h"
 #include <QDebug>
+#include <QColor>
 
 Character::Character(QGraphicsItem *parent): QGraphicsRectItem(parent)
 {
@@ -11,13 +12,13 @@ Character::Character(QGraphicsItem *parent): QGraphicsRectItem(parent)
 
     //QLine itemek, ezekkel tud erintkezni a kornyezettel a karakter
     top = new QGraphicsLineItem(20, 1, 80, 1, this);
-    top->setPen(QPen(Qt::cyan, 4));
+    top->setPen(QPen(QColor(0,0,0,0), 0));
     right = new QGraphicsLineItem(99, 20, 99, 180, this);
-    right->setPen(QPen(Qt::blue, 4));
+    right->setPen(QPen(QColor(0,0,0,0), 4));
     bottom = new QGraphicsLineItem(20, 199, 80, 199, this);
-    bottom->setPen(QPen(Qt::black, 4));
+    bottom->setPen(QPen(QColor(0,0,0,0), 4));
     left = new QGraphicsLineItem(1, 20, 1, 180, this);
-    left->setPen(QPen(Qt::red, 4));
+    left->setPen(QPen(QColor(0,0,0,0), 4));
 
     //timer, annyi idokozonkent mozog a karakter
     moveTimer=new QTimer(this);
