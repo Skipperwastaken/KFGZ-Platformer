@@ -6,7 +6,7 @@ class TerrainData
 {
 public:
     TerrainData();
-    void setData(int height, int width);
+    void setData(int width, int height);
     int w, h, id;
 };
 

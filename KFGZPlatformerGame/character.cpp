@@ -56,10 +56,10 @@ void Character::move()
             //eses megallitasa
             yVelocity = (yVelocity < 0 ? 0 : yVelocity);
             int tempNum=bottomCollidingItems[i]->scenePos().y();
-            qDebug() << tempNum << " " << pos().y()+200;
+            //qDebug() << tempNum << " " << pos().y()+200;
             if(tempNum<pos().y()+200)
             {
-                qDebug() << "in ground";
+                //qDebug() << "in ground";
                 setPos(x(), tempNum-200);
             }
             //ha leer a foldre akkor ugorhat ujra

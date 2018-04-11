@@ -20,6 +20,7 @@
 #include "enemy.h"
 #include "mapchunk.h"
 #include <QGraphicsProxyWidget>
+#include "terraindata.h"
 
 class Game: public QGraphicsView
 {
@@ -41,6 +42,10 @@ public:
     QGraphicsProxyWidget * exitProxy;
     QPushButton * exitB;
 
+    QVector<TerrainData> terrains;
+    void readTerrainFile();
+    QVector<ChunkData> chunks;
+    void readChunkFile();
     QVector<MapChunk> chunk;
     QTimer *mapSlideTimer;
     int mapSlideSpeed;

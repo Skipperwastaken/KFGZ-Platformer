@@ -27,11 +27,13 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     scene->addItem(player);
 
     //map chunkok letrehozasa
+    readTerrainFile();
+    readChunkFile();
     MapChunk tmpMC;
     for(int i = 0 ; i < 2; i++)
         chunk.append(tmpMC);
-    chunk[0].setParams(scene, 0, "asd", true);
-    chunk[1].setParams(scene, 0, "asd");
+    chunk[0].setParams(scene, 0, "asd", terrains, chunks, true);
+    chunk[1].setParams(scene, 0, "asd", terrains, chunks);
     for(int i = 0 ; i < 2; i++)
         chunk[i].createChunk();
     //map balra mozgatasa
@@ -161,7 +163,7 @@ void Game::checkForAttact()
         {
             if(!chunk.at(j).enemies.at(i)->dead)
             {
-                if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 1000)
+                if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 700)
                 {
                     QList<QGraphicsItem*> enemyCollisions = chunk.at(j).enemies.at(i)->model->collidingItems();
                     for (int w = 0, n = enemyCollisions.size(); w < n; ++w)
@@ -185,6 +187,37 @@ void Game::checkForAttact()
 Game::~Game()
 {
     qDebug() << "game deleted";
+}
+
+void Game::readTerrainFile()
+{
+    TerrainData tmpTerrain;
+    tmpTerrain.setData(screenWidth, screenHeight/5);
+    tmpTerrain.id=0;
+    terrains.append(tmpTerrain);
+
+    tmpTerrain.setData(screenWidth/10, screenHeight/5);
+    tmpTerrain.id=1;
+    terrains.append(tmpTerrain);
+}
+
+void Game::readChunkFile()
+{
+    ChunkData tmpChunk;
+
+    tmpChunk.terrainID.append(0);
+    tmpChunk.terrainX.append(0);
+    tmpChunk.terrainY.append(screenHeight*4/5);
+
+    tmpChunk.terrainID.append(1);
+    tmpChunk.terrainX.append(screenWidth/2);
+    tmpChunk.terrainY.append(screenHeight*3/5);
+
+    tmpChunk.enemyType.append(0);
+    tmpChunk.enemyX.append(screenWidth/4*3);
+    tmpChunk.enemyY.append(screenHeight*4/5-200);
+
+    chunks.append(tmpChunk);
 }
 
 

@@ -66,7 +66,7 @@ void Enemy::finishAttack()
 
 void Enemy::die()
 {
-    //TODO: halal animacio
+    model->setPixmap(deadModel);
     dead=true;
     //model->setPixmap(deadModel);
     prepAttackT->stop();

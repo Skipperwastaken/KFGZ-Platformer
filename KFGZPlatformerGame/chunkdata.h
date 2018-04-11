@@ -13,7 +13,7 @@ public:
     QVector<int> terrainID;
     QVector<int> terrainX;
     QVector<int> terrainY;
-    QVector<QString> enemyType;
+    QVector<int> enemyType;
     QVector<int> enemyX;
     QVector<int> enemyY;
 };
