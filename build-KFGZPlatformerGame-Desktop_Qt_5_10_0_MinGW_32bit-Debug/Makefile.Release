@@ -174,7 +174,9 @@ release/qrc_res.cpp: ../KFGZPlatformerGame/res.qrc \
 		../KFGZPlatformerGame/images/enemies/spearMan/spearmanDead.png \
 		../KFGZPlatformerGame/images/enemies/spearMan/spearmanPrep.png \
 		../KFGZPlatformerGame/images/enemies/spearMan/spearmanAttack.png \
-		../KFGZPlatformerGame/images/enemies/spearMan/spearman.png
+		../KFGZPlatformerGame/images/enemies/spearMan/spearman.png \
+		../KFGZPlatformerGame/data/terrains.txt \
+		../KFGZPlatformerGame/data/chunkText.txt
 	G:\Programs\Qt\5.10.0\mingw53_32\bin\rcc.exe -name res ..\KFGZPlatformerGame\res.qrc -o release\qrc_res.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -318,6 +320,7 @@ release/moc_game.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/Q
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QPushButton \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qabstractbutton.h \
@@ -344,6 +347,7 @@ release/moc_game.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/Q
 		../KFGZPlatformerGame/mapchunk.h \
 		../KFGZPlatformerGame/chunkdata.h \
 		../KFGZPlatformerGame/terraindata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QFile \
 		../KFGZPlatformerGame/game.h \
 		release/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -467,6 +471,7 @@ release/moc_character.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidg
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../KFGZPlatformerGame/character.h \
 		release/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -590,6 +595,7 @@ release/moc_enemy.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../KFGZPlatformerGame/enemy.h \
 		release/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -739,6 +745,7 @@ release/moc_Menu.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/Q
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
 		../KFGZPlatformerGame/spearman.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
@@ -761,6 +768,7 @@ release/moc_Menu.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/Q
 		../KFGZPlatformerGame/mapchunk.h \
 		../KFGZPlatformerGame/chunkdata.h \
 		../KFGZPlatformerGame/terraindata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QFile \
 		../KFGZPlatformerGame/Menu.h \
 		release/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -884,6 +892,7 @@ release/moc_spearman.cpp: ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/spearman.h \
 		release/moc_predefs.h \
@@ -1008,6 +1017,7 @@ release/moc_swordsman.cpp: ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/swordsman.h \
 		release/moc_predefs.h \
@@ -1132,6 +1142,7 @@ release/moc_assassin.cpp: ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/assassin.h \
 		release/moc_predefs.h \
@@ -1256,6 +1267,7 @@ release/moc_earthwizard.cpp: ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/earthwizard.h \
 		release/moc_predefs.h \
@@ -1380,6 +1392,7 @@ release/moc_firewziard.cpp: ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
 		../KFGZPlatformerGame/firewziard.h \
 		release/moc_predefs.h \
@@ -1556,6 +1569,7 @@ release/main.o: ../KFGZPlatformerGame/main.cpp ../../../Programs/Qt/5.10.0/mingw
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
 		../KFGZPlatformerGame/spearman.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
@@ -1573,7 +1587,8 @@ release/main.o: ../KFGZPlatformerGame/main.cpp ../../../Programs/Qt/5.10.0/mingw
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QVector \
 		../KFGZPlatformerGame/mapchunk.h \
 		../KFGZPlatformerGame/chunkdata.h \
-		../KFGZPlatformerGame/terraindata.h
+		../KFGZPlatformerGame/terraindata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\KFGZPlatformerGame\main.cpp
 
 release/game.o: ../KFGZPlatformerGame/game.cpp ../KFGZPlatformerGame/game.h \
@@ -1709,6 +1724,7 @@ release/game.o: ../KFGZPlatformerGame/game.cpp ../KFGZPlatformerGame/game.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QPushButton \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qabstractbutton.h \
@@ -1734,7 +1750,8 @@ release/game.o: ../KFGZPlatformerGame/game.cpp ../KFGZPlatformerGame/game.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QVector \
 		../KFGZPlatformerGame/mapchunk.h \
 		../KFGZPlatformerGame/chunkdata.h \
-		../KFGZPlatformerGame/terraindata.h
+		../KFGZPlatformerGame/terraindata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\game.o ..\KFGZPlatformerGame\game.cpp
 
 release/character.o: ../KFGZPlatformerGame/character.cpp ../KFGZPlatformerGame/character.h \
@@ -1855,9 +1872,9 @@ release/character.o: ../KFGZPlatformerGame/character.cpp ../KFGZPlatformerGame/c
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../KFGZPlatformerGame/terrain.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\character.o ..\KFGZPlatformerGame\character.cpp
 
 release/terrain.o: ../KFGZPlatformerGame/terrain.cpp ../KFGZPlatformerGame/terrain.h \
@@ -2071,7 +2088,8 @@ release/enemy.o: ../KFGZPlatformerGame/enemy.cpp ../KFGZPlatformerGame/enemy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qfont.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\enemy.o ..\KFGZPlatformerGame\enemy.cpp
 
 release/Menu.o: ../KFGZPlatformerGame/Menu.cpp ../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QGuiApplication \
@@ -2231,6 +2249,7 @@ release/Menu.o: ../KFGZPlatformerGame/Menu.cpp ../../../Programs/Qt/5.10.0/mingw
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QKeyEvent \
 		../KFGZPlatformerGame/spearman.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString \
@@ -2241,6 +2260,7 @@ release/Menu.o: ../KFGZPlatformerGame/Menu.cpp ../../../Programs/Qt/5.10.0/mingw
 		../KFGZPlatformerGame/mapchunk.h \
 		../KFGZPlatformerGame/chunkdata.h \
 		../KFGZPlatformerGame/terraindata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QFile \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/Qdialog \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Menu.o ..\KFGZPlatformerGame\Menu.cpp
@@ -2364,6 +2384,7 @@ release/spearman.o: ../KFGZPlatformerGame/spearman.cpp ../KFGZPlatformerGame/spe
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\spearman.o ..\KFGZPlatformerGame\spearman.cpp
 
@@ -2490,6 +2511,7 @@ release/mapchunk.o: ../KFGZPlatformerGame/mapchunk.cpp ../KFGZPlatformerGame/map
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../KFGZPlatformerGame/spearman.h \
 		../KFGZPlatformerGame/firewziard.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsScene \
@@ -2734,6 +2756,7 @@ release/swordsman.o: ../KFGZPlatformerGame/swordsman.cpp ../KFGZPlatformerGame/s
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\swordsman.o ..\KFGZPlatformerGame\swordsman.cpp
 
@@ -2856,6 +2879,7 @@ release/assassin.o: ../KFGZPlatformerGame/assassin.cpp ../KFGZPlatformerGame/ass
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\assassin.o ..\KFGZPlatformerGame\assassin.cpp
 
@@ -2978,6 +3002,7 @@ release/earthwizard.o: ../KFGZPlatformerGame/earthwizard.cpp ../KFGZPlatformerGa
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\earthwizard.o ..\KFGZPlatformerGame\earthwizard.cpp
 
@@ -3100,6 +3125,7 @@ release/firewizard.o: ../KFGZPlatformerGame/firewizard.cpp ../KFGZPlatformerGame
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\firewizard.o ..\KFGZPlatformerGame\firewizard.cpp
 

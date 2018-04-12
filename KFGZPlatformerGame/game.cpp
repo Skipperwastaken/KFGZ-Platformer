@@ -181,9 +181,8 @@ void Game::checkForAttact()
                 if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 700)
                 {
                     QList<QGraphicsItem*> enemyCollisions = chunk.at(j).enemies.at(i)->model->collidingItems();
-                    for (int w = 0, n = enemyCollisions.size(); w < n; ++w)
+                    for (int w = 0; w < enemyCollisions.size(); w++)
                     {
-
                         if (typeid(*(enemyCollisions.at(w))) == typeid(Character))
                         {
                             //qDebug() << "player hits someone";
@@ -206,38 +205,95 @@ Game::~Game()
 
 void Game::readTerrainFile()
 {
+    TerrainData tmpTerrain;
+    double a, b;
+    int j=0;
+
     QFile terrainFiles(":/data/data/terrains.txt");
     if (!terrainFiles.open(QIODevice::ReadOnly | QIODevice::Text))
             return;
 
-    TerrainData tmpTerrain;
-    double a, b, j=0;
     QTextStream in(&terrainFiles);
+    qDebug() << in.atEnd();
     while(!in.atEnd())
     {
         in >> a;
-        qDebug() << a;
+        //qDebug() << a;
         in >> b;
-        qDebug() << b;
         tmpTerrain.setData(a/100*screenHeight, b/100*screenHeight);
-        qDebug() << a/100*screenHeight << " | " << b/100*screenHeight;
         tmpTerrain.id=j++;
         terrains.append(tmpTerrain);
     }
+    qDebug() << "readTerrainFile finished loading";
     terrainFiles.close();
-
-/*
-    tmpTerrain.setData(screenWidth, screenHeight/5);
-    tmpTerrain.id=0;
-    terrains.append(tmpTerrain);
-
-    tmpTerrain.setData(screenWidth/10, screenHeight/5);
-    tmpTerrain.id=1;
-    terrains.append(tmpTerrain); */
 }
 
 void Game::readChunkFile()
 {
+    ChunkData tmpChunk;
+    double a=0;
+    QString c;
+    int inType=0; //0=terrain, 1 enemy
+
+    QFile chunkFiles(":/data/data/chunkText.txt");
+    if (!chunkFiles.open(QIODevice::ReadOnly | QIODevice::Text))
+            return;
+
+    QTextStream chnkStream(&chunkFiles);
+    qDebug() << chnkStream.atEnd();
+    while(!chnkStream.atEnd())
+    {
+        qDebug() << "started reading readChunkFile";
+        chnkStream >> c;
+        qDebug() << c;
+        if(c=="c")
+        {
+            if(tmpChunk.terrainID.length()!=0)
+            {
+                chunks.append(tmpChunk);
+
+                tmpChunk.enemyType.clear();
+                tmpChunk.enemyX.clear();
+                tmpChunk.enemyY.clear();
+                tmpChunk.terrainID.clear();
+                tmpChunk.terrainX.clear();
+                tmpChunk.terrainY.clear();
+            }
+        }
+        else if(c=="t")
+            inType=0;
+        else if(c=="e")
+            inType=1;
+        else
+        {
+            a=c.toDouble();
+            switch (inType) {
+            case 0:
+                tmpChunk.terrainID.append(a);
+                //qDebug() << tmpChunk.terrainID.at(0);
+                chnkStream >> a;
+                tmpChunk.terrainX.append(a/100*screenHeight);
+                chnkStream >> a;
+                tmpChunk.terrainY.append(a/100*screenHeight);
+                break;
+            case 1:
+                tmpChunk.enemyType.append(a);
+                chnkStream >> a;
+                tmpChunk.enemyX.append(a/100*screenHeight);
+                chnkStream >> a;
+                tmpChunk.enemyY.append(a/100*screenHeight);
+                break;
+            default:
+                qDebug() <<  inType << " inType doesnt exist";
+                break;
+            }
+        }
+    }
+    qDebug() << "readChunkFile finished loading";
+    chunks.append(tmpChunk);
+    chunkFiles.close();
+
+/*
     ChunkData tmpChunk;
 
     tmpChunk.terrainID.append(0);
@@ -252,7 +308,7 @@ void Game::readChunkFile()
     tmpChunk.enemyX.append(screenWidth/4*3);
     tmpChunk.enemyY.append(screenHeight*4/5-200);
 
-    chunks.append(tmpChunk);
+    chunks.append(tmpChunk);*/
 }
 
 

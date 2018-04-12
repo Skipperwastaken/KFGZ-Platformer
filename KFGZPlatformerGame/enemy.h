@@ -16,7 +16,7 @@ public:
     QGraphicsPixmapItem *model;
     QGraphicsPixmapItem *attackHitBox;
     QPixmap normalModel, prepModel, attackModel, deadModel; //ideiglenes, kesobb lesznek animaciok
-    QTimer *prepAttackT, *attackT, *attackCD;
+    QTimer *prepAttackT, *attackT, *attackHitboxT, *attackCD;
     int prepTime;
     void setNormalModel(QString mdl);
     bool dead=false;
@@ -25,6 +25,7 @@ signals:
 public slots:
     void prepAttack(); //a kap jelet a karakter kozelsegere, akkor elkezd felkeszulni a tamadasra
     void attack();     //tamad, itt nezi h el talalta e
+    void checkAttackHitbox();
     void finishAttack(); // egy ideig kint van az atack hitbox, hogy lathato legyen, utana ez tuntei el
     void die();
 };

@@ -11,5 +11,5 @@ Terrain::Terrain(int x, int y, int width, int height, int ID)
 
 Terrain::~Terrain()
 {
-    qDebug() << "terrain id: " << textureID << "deleted";
+    //qDebug() << "terrain id: " << textureID << "deleted";
 }

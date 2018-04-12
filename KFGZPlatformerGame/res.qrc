@@ -15,5 +15,6 @@
     </qresource>
     <qresource prefix="/data">
         <file>data/terrains.txt</file>
+        <file>data/chunkText.txt</file>
     </qresource>
 </RCC>

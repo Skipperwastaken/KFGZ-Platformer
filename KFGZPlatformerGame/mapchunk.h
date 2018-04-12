@@ -19,6 +19,7 @@ public:
     QGraphicsScene *scene;
     int level;
     QString theme; //forest, winter, town, etc.
+    int deleteDistance=0;
 
     QVector<TerrainData> *terrainList;
     QVector<ChunkData> *chunkList;

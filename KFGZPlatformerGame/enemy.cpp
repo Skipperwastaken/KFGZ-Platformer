@@ -5,6 +5,7 @@ Enemy::Enemy()
     prepAttackT = new QTimer(this);
     attackT = new QTimer(this);
     attackCD = new QTimer(this);
+    attackHitboxT = new QTimer(this);
     prepAttackT->setSingleShot(true);
     attackT->setSingleShot(true);
     attackCD->setSingleShot(true);
@@ -13,6 +14,8 @@ Enemy::Enemy()
             this, &Enemy::attack);
     connect(attackT, &QTimer::timeout,
             this, &Enemy::finishAttack);
+    connect(attackHitboxT, &QTimer::timeout,
+            this, &Enemy::checkAttackHitbox);
 
 }
 
@@ -21,7 +24,7 @@ void Enemy::setNormalModel(QString mdl)
     normalModel.load(mdl);
     model = new QGraphicsPixmapItem(normalModel, this);
     if(model->pixmap().hasAlphaChannel())
-        qDebug() << "van alpha channel";
+        //qDebug() << "van alpha channel";
     model->setShapeMode(QGraphicsPixmapItem::HeuristicMaskShape);
 }
 
@@ -32,6 +35,7 @@ void Enemy::prepAttack()
     if(!prepAttackT->isActive() && !attackT->isActive() && !attackCD->isActive())
     {
         model->setPixmap(prepModel);
+        model->setShapeMode(QGraphicsPixmapItem::HeuristicMaskShape);
         prepAttackT->start(prepTime);
     }
 }
@@ -40,9 +44,20 @@ void Enemy::attack()
 {
     if(dead)
         return;
-    qDebug() << "attack";
+    //qDebug() << "attack";
     model->setPixmap(attackModel);
     attackHitBox->show();
+    attackHitboxT->start(10);
+    attackT->start(500);
+}
+
+void Enemy::checkAttackHitbox()
+{
+    if(dead)
+    {
+        attackHitboxT->stop();
+        return;
+    }
     QList<QGraphicsItem *> hitStuff = attackHitBox->collidingItems();
     for (int i = 0, n = hitStuff.size(); i < n; ++i)
     {
@@ -53,15 +68,15 @@ void Enemy::attack()
             qDebug() << "hit";
         }
     }
-    attackT->start(500);
 }
 
 
 void Enemy::finishAttack()
 {
+    attackHitboxT->stop();
     if(dead)
         return;
-    qDebug() << "finish attack";
+    //qDebug() << "finish attack";
     attackHitBox->hide();
     model->setPixmap(normalModel);
     attackCD->start(2000);

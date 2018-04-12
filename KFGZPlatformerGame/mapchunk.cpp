@@ -27,6 +27,8 @@ void MapChunk::setParams(QGraphicsScene *scn, int lvl, QString thm, QVector<Terr
     terrainList=&trns;
     chunkList=&chnks;
     first=frst;
+    if(first)
+        deleteDistance=screenHeight/9*16;
 }
 
 void MapChunk::slideLeft()
@@ -35,18 +37,24 @@ void MapChunk::slideLeft()
         terrains[i]->moveBy(-1, 0);
     for(int i=0; i < enemies.length(); i++)
         enemies[i]->moveBy(-1, 0);
-    if(terrains.at(0)->pos().x() < -screenHeight/9*16)
+    if(deleteDistance++>screenHeight/9*16*2)
+    {
         deleteChunk();
+        deleteDistance=0;
+    }
+    //if(terrains.at(0)->pos().x() < screenWidth/2-screenHeight/9*24)
+    //    deleteChunk();
 }
 
 void MapChunk::createChunk()
 {
     //qDebug() << "Create chunk";
     //get random num
-    int randomChunkID=0;
+    int randomChunkID=QRandomGenerator::global()->generate()%chunkList->length();
     //sok sikert ennek megertesehez, sok a kommentezett debug, mert sokat szenvedtem vele
     //a chunkok kozul a kivalasztottbol a teraindata alapjan megalkotja a terrain objektumot
     //qDebug() << "creating terrains";
+    //qDebug() << "Number of terrains should be : " << chunkList->at(randomChunkID).terrainID.length();
     for(int i=0; i < chunkList->at(randomChunkID).terrainID.length();i++)
         terrains.append(new Terrain(0, 0, terrainList->at(chunkList->at(randomChunkID).terrainID.at(i)).w, terrainList->at(chunkList->at(randomChunkID).terrainID.at(i)).h, chunkList->at(randomChunkID).terrainID.at(i)));
 
@@ -57,6 +65,7 @@ void MapChunk::createChunk()
             enemies.append(new SpearMan);
             break;
         default:
+            enemies.append(new SpearMan);
             break;
         }
     }
@@ -68,14 +77,14 @@ void MapChunk::createChunk()
     //qDebug() << "Number of terrains: " << terrains.length();
     for(int i=0;i<terrains.length();i++)
     {
-        terrains[i]->setPos(chunkList->at(randomChunkID).terrainX.at(i)+(first ? 0 : screenHeight/9*16), chunkList->at(randomChunkID).terrainY.at(i));
+        terrains[i]->setPos(screenWidth/2-screenHeight/9*8+chunkList->at(randomChunkID).terrainX.at(i)+(first ? 0 : screenHeight/9*16), chunkList->at(randomChunkID).terrainY.at(i));
         scene->addItem(terrains.at(i));
         //qDebug() << terrains.at(i)->pos().x() << " | " << terrains.at(i)->pos().y();
     }
 
     for(int i=0; i < enemies.length(); i++)
     {
-        enemies[i]->setPos(chunkList->at(randomChunkID).enemyX.at(i)+(first ? 0 : screenHeight/9*16), chunkList->at(randomChunkID).enemyY.at(i));
+        enemies[i]->setPos(screenWidth/2-screenHeight/9*8+chunkList->at(randomChunkID).enemyX.at(i)+(first ? 0 : screenHeight/9*16), chunkList->at(randomChunkID).enemyY.at(i));
         scene->addItem(enemies[i]);
     }
 
