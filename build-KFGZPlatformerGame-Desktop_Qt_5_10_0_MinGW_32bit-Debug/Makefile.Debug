@@ -164,12 +164,14 @@ compiler_rcc_clean:
 debug/qrc_res.cpp: ../KFGZPlatformerGame/res.qrc \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/rcc.exe \
 		../KFGZPlatformerGame/images/pauseMenu.png \
+		../KFGZPlatformerGame/images/deathPopup.png \
 		../KFGZPlatformerGame/images/character.png \
 		../KFGZPlatformerGame/images/enemies/fireWizard/fireWizardAttack.png \
 		../KFGZPlatformerGame/images/enemies/fireWizard/fireWizard.png \
 		../KFGZPlatformerGame/images/enemies/fireWizard/fireBall.png \
 		../KFGZPlatformerGame/images/enemies/fireWizard/fireWizardPrep.png \
 		../KFGZPlatformerGame/images/enemies/spearMan/spearmanHitbox.png \
+		../KFGZPlatformerGame/images/enemies/spearMan/spearmanDead.png \
 		../KFGZPlatformerGame/images/enemies/spearMan/spearmanPrep.png \
 		../KFGZPlatformerGame/images/enemies/spearMan/spearmanAttack.png \
 		../KFGZPlatformerGame/images/enemies/spearMan/spearman.png
@@ -340,6 +342,8 @@ debug/moc_game.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGr
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QTransform \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QVector \
 		../KFGZPlatformerGame/mapchunk.h \
+		../KFGZPlatformerGame/chunkdata.h \
+		../KFGZPlatformerGame/terraindata.h \
 		../KFGZPlatformerGame/game.h \
 		debug/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -755,6 +759,8 @@ debug/moc_Menu.cpp: ../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGr
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QTransform \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QVector \
 		../KFGZPlatformerGame/mapchunk.h \
+		../KFGZPlatformerGame/chunkdata.h \
+		../KFGZPlatformerGame/terraindata.h \
 		../KFGZPlatformerGame/Menu.h \
 		debug/moc_predefs.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/bin/moc.exe
@@ -1565,7 +1571,9 @@ debug/main.o: ../KFGZPlatformerGame/main.cpp ../../../Programs/Qt/5.10.0/mingw53
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QSizeF \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QTransform \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QVector \
-		../KFGZPlatformerGame/mapchunk.h
+		../KFGZPlatformerGame/mapchunk.h \
+		../KFGZPlatformerGame/chunkdata.h \
+		../KFGZPlatformerGame/terraindata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\KFGZPlatformerGame\main.cpp
 
 debug/game.o: ../KFGZPlatformerGame/game.cpp ../KFGZPlatformerGame/game.h \
@@ -1724,7 +1732,9 @@ debug/game.o: ../KFGZPlatformerGame/game.cpp ../KFGZPlatformerGame/game.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QSizeF \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QTransform \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QVector \
-		../KFGZPlatformerGame/mapchunk.h
+		../KFGZPlatformerGame/mapchunk.h \
+		../KFGZPlatformerGame/chunkdata.h \
+		../KFGZPlatformerGame/terraindata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\game.o ..\KFGZPlatformerGame\game.cpp
 
 debug/character.o: ../KFGZPlatformerGame/character.cpp ../KFGZPlatformerGame/character.h \
@@ -1846,7 +1856,8 @@ debug/character.o: ../KFGZPlatformerGame/character.cpp ../KFGZPlatformerGame/cha
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/qpalette.h \
 		../KFGZPlatformerGame/terrain.h \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QColor
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\character.o ..\KFGZPlatformerGame\character.cpp
 
 debug/terrain.o: ../KFGZPlatformerGame/terrain.cpp ../KFGZPlatformerGame/terrain.h \
@@ -2228,6 +2239,8 @@ debug/Menu.o: ../KFGZPlatformerGame/Menu.cpp ../../../Programs/Qt/5.10.0/mingw53
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtGui/QBrush \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QVector \
 		../KFGZPlatformerGame/mapchunk.h \
+		../KFGZPlatformerGame/chunkdata.h \
+		../KFGZPlatformerGame/terraindata.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/Qdialog \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Menu.o ..\KFGZPlatformerGame\Menu.cpp
@@ -2480,7 +2493,11 @@ debug/mapchunk.o: ../KFGZPlatformerGame/mapchunk.cpp ../KFGZPlatformerGame/mapch
 		../KFGZPlatformerGame/spearman.h \
 		../KFGZPlatformerGame/firewziard.h \
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/QGraphicsScene \
-		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsscene.h
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../KFGZPlatformerGame/chunkdata.h \
+		../KFGZPlatformerGame/terraindata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QRandomGenerator \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qrandom.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mapchunk.o ..\KFGZPlatformerGame\mapchunk.cpp
 
 debug/chunkdata.o: ../KFGZPlatformerGame/chunkdata.cpp ../KFGZPlatformerGame/chunkdata.h \
@@ -2531,7 +2548,71 @@ debug/chunkdata.o: ../KFGZPlatformerGame/chunkdata.cpp ../KFGZPlatformerGame/chu
 		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\chunkdata.o ..\KFGZPlatformerGame\chunkdata.cpp
 
-debug/terraindata.o: ../KFGZPlatformerGame/terraindata.cpp ../KFGZPlatformerGame/terraindata.h
+debug/terraindata.o: ../KFGZPlatformerGame/terraindata.cpp ../KFGZPlatformerGame/terraindata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qdebug.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qalgorithms.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qglobal.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qconfig.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qtcore-config.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qsystemdetection.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qprocessordetection.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qcompilerdetection.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qtypeinfo.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qsysinfo.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qlogging.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qflags.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qatomic.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbasicatomic.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qatomic_bootstrap.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qgenericatomic.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qatomic_cxx11.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qatomic_msvc.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qglobalstatic.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qmutex.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qnumeric.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qversiontagging.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qhash.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qchar.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qiterator.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qlist.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qrefcount.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qarraydata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qhashfunctions.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qstring.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbytearray.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qnamespace.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qstringliteral.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qstringalgorithms.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qstringview.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qstringbuilder.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qpair.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qbytearraylist.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qstringlist.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qregexp.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qstringmatcher.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qmap.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qtextstream.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qiodevice.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qobject.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qobjectdefs.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qobjectdefs_impl.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qcoreevent.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qscopedpointer.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qmetatype.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qvarlengtharray.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qcontainerfwd.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qobject_impl.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qlocale.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qvariant.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qshareddata.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qvector.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qpoint.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qset.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
+		../../../Programs/Qt/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\terraindata.o ..\KFGZPlatformerGame\terraindata.cpp
 
 debug/swordsman.o: ../KFGZPlatformerGame/swordsman.cpp ../KFGZPlatformerGame/swordsman.h \

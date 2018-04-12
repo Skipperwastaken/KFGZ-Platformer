@@ -11,5 +11,6 @@
         <file>images/enemies/fireWizard/fireWizardAttack.png</file>
         <file>images/enemies/fireWizard/fireWizardPrep.png</file>
         <file>images/enemies/spearMan/spearmanDead.png</file>
+        <file>images/deathPopup.png</file>
     </qresource>
 </RCC>

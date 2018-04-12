@@ -83,6 +83,21 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     connect(exitB, &QAbstractButton::clicked,
             this, &Game::exitGame);
 
+    //meghaltal menu
+    deathMenu = new QGraphicsPixmapItem(QPixmap(":/images/images/deathPopup.png").scaled(QSize(screenHeight*4/5, screenHeight*4/5)));
+    scene->addItem(deathMenu);
+    deathMenu->setPos(screenWidth/2-screenHeight*2/5, screenHeight/5);
+    deathMenu->setZValue(10);
+    deathMenu->hide();
+
+    ohNoB = new QPushButton(QString("Oh no!"));
+    ohNoProxy = new QGraphicsProxyWidget(deathMenu);
+    ohNoProxy->setWidget(ohNoB);
+    ohNoB->setGeometry(screenHeight/10, screenHeight*12/30, screenHeight*6/10, screenHeight/10);
+    ohNoB->hide();
+    connect(ohNoB, &QAbstractButton::clicked,
+            this, &Game::exitGame);
+
     //ha minden elokeszulet kesz, megnyitjuk az ablakot, androidon nincs tálca, úgyhogy windowson is fullscreennel kell tesztelni
     showFullScreen();
     mapSlideSpeed=3;
@@ -247,4 +262,13 @@ void Game::resumeGame()
     player->moveTimer->start(1);
     mapSlideTimer->start(mapSlideSpeed);
     checkForAttactT->start(checkForAttackSpeed);
+}
+
+void Game::died()
+{
+    deathMenu->show();
+    ohNoB->show();
+    player->moveTimer->stop();
+    mapSlideTimer->stop();
+    checkForAttactT->stop();
 }

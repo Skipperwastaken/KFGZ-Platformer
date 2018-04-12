@@ -42,6 +42,10 @@ public:
     QGraphicsProxyWidget * exitProxy;
     QPushButton * exitB;
 
+    QGraphicsPixmapItem * deathMenu;
+    QGraphicsProxyWidget * ohNoProxy;
+    QPushButton * ohNoB;
+
     QVector<TerrainData> terrains;
     void readTerrainFile();
     QVector<ChunkData> chunks;
@@ -67,6 +71,7 @@ public slots:
     void exitGame();
     void pauseGame();
     void resumeGame();
+    void died();
 };
 
 #endif // GAME_H
