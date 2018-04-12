@@ -7,6 +7,7 @@ SpearMan::SpearMan()
     attackModel.load(":/images/images/enemies/spearMan/spearmanAttack.png");
     deadModel.load(":/images/images/enemies/spearMan/spearmanDead.png");
     attackHitBox = new QGraphicsPixmapItem(QPixmap(":/images/images/enemies/spearMan/spearmanHitbox.png"), this);
+    attackHitBox->setShapeMode(QGraphicsPixmapItem::HeuristicMaskShape);
     attackHitBox->setOffset(0, 91);
     attackHitBox->hide();
     prepTime=1000;

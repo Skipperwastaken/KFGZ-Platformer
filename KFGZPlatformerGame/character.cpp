@@ -1,7 +1,6 @@
 #include "character.h"
 #include "terrain.h"
-#include <QDebug>
-#include <QColor>
+
 
 Character::Character(QGraphicsItem *parent): QGraphicsRectItem(parent)
 {
@@ -9,6 +8,7 @@ Character::Character(QGraphicsItem *parent): QGraphicsRectItem(parent)
     setRect(0, 0, 100, 200);
     setPen(QPen(QColor(0,0,0,0)));
     model=new QGraphicsPixmapItem(QPixmap(":/images/images/character.png").scaled(QSize(100, 200)), this);
+    model->setShapeMode(QGraphicsPixmapItem::HeuristicMaskShape);
 
     //QLine itemek, ezekkel tud erintkezni a kornyezettel a karakter
     top = new QGraphicsLineItem(20, 1, 80, 1, this);

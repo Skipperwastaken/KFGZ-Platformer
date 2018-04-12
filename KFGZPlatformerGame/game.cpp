@@ -206,14 +206,34 @@ Game::~Game()
 
 void Game::readTerrainFile()
 {
+    QFile terrainFiles(":/data/data/terrains.txt");
+    if (!terrainFiles.open(QIODevice::ReadOnly | QIODevice::Text))
+            return;
+
     TerrainData tmpTerrain;
+    double a, b, j=0;
+    QTextStream in(&terrainFiles);
+    while(!in.atEnd())
+    {
+        in >> a;
+        qDebug() << a;
+        in >> b;
+        qDebug() << b;
+        tmpTerrain.setData(a/100*screenHeight, b/100*screenHeight);
+        qDebug() << a/100*screenHeight << " | " << b/100*screenHeight;
+        tmpTerrain.id=j++;
+        terrains.append(tmpTerrain);
+    }
+    terrainFiles.close();
+
+/*
     tmpTerrain.setData(screenWidth, screenHeight/5);
     tmpTerrain.id=0;
     terrains.append(tmpTerrain);
 
     tmpTerrain.setData(screenWidth/10, screenHeight/5);
     tmpTerrain.id=1;
-    terrains.append(tmpTerrain);
+    terrains.append(tmpTerrain); */
 }
 
 void Game::readChunkFile()

@@ -21,6 +21,7 @@
 #include "mapchunk.h"
 #include <QGraphicsProxyWidget>
 #include "terraindata.h"
+#include <QFile>
 
 class Game: public QGraphicsView
 {

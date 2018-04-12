@@ -13,4 +13,7 @@
         <file>images/enemies/spearMan/spearmanDead.png</file>
         <file>images/deathPopup.png</file>
     </qresource>
+    <qresource prefix="/data">
+        <file>data/terrains.txt</file>
+    </qresource>
 </RCC>

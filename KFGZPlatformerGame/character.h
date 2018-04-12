@@ -11,6 +11,8 @@
 #include <QPen>
 #include <enemy.h>
 #include <QGraphicsProxyWidget>
+#include <QDebug>
+#include <QColor>
 
 
 class Character:public QObject, public QGraphicsRectItem

@@ -20,6 +20,9 @@ void Enemy::setNormalModel(QString mdl)
 {
     normalModel.load(mdl);
     model = new QGraphicsPixmapItem(normalModel, this);
+    if(model->pixmap().hasAlphaChannel())
+        qDebug() << "van alpha channel";
+    model->setShapeMode(QGraphicsPixmapItem::HeuristicMaskShape);
 }
 
 void Enemy::prepAttack()

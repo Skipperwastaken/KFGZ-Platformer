@@ -35,7 +35,7 @@ void MapChunk::slideLeft()
         terrains[i]->moveBy(-1, 0);
     for(int i=0; i < enemies.length(); i++)
         enemies[i]->moveBy(-1, 0);
-    if(terrains.at(0)->pos().x() < -screenWidth)
+    if(terrains.at(0)->pos().x() < -screenHeight/9*16)
         deleteChunk();
 }
 
@@ -68,14 +68,14 @@ void MapChunk::createChunk()
     //qDebug() << "Number of terrains: " << terrains.length();
     for(int i=0;i<terrains.length();i++)
     {
-        terrains[i]->setPos(chunkList->at(randomChunkID).terrainX.at(i)+(first ? 0 : screenWidth), chunkList->at(randomChunkID).terrainY.at(i));
+        terrains[i]->setPos(chunkList->at(randomChunkID).terrainX.at(i)+(first ? 0 : screenHeight/9*16), chunkList->at(randomChunkID).terrainY.at(i));
         scene->addItem(terrains.at(i));
         //qDebug() << terrains.at(i)->pos().x() << " | " << terrains.at(i)->pos().y();
     }
 
     for(int i=0; i < enemies.length(); i++)
     {
-        enemies[i]->setPos(chunkList->at(randomChunkID).enemyX.at(i)+(first ? 0 : screenWidth), chunkList->at(randomChunkID).enemyY.at(i));
+        enemies[i]->setPos(chunkList->at(randomChunkID).enemyX.at(i)+(first ? 0 : screenHeight/9*16), chunkList->at(randomChunkID).enemyY.at(i));
         scene->addItem(enemies[i]);
     }
 
