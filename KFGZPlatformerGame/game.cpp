@@ -389,7 +389,7 @@ void Game::increaseScore(int amount)
         scoreText->setPlainText(QString("Distance: ") + QString::number(highScore/100));
     }
     //TODO: delete these
-    if(highScore/100>=50)
+    if(highScore/100>=500)
     {
         deathMenu->setPixmap(QPixmap(":/images/images/victoryPopup.png").scaled(QSize(screenHeight*4/5, screenHeight*4/5)));
         ohNoB->setText("Kérem a csokimat!");
