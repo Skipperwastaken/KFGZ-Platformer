@@ -22,6 +22,7 @@
 #include <QGraphicsProxyWidget>
 #include "terraindata.h"
 #include <QFile>
+#include <QGraphicsTextItem>
 
 class Game: public QGraphicsView
 {
@@ -29,6 +30,9 @@ class Game: public QGraphicsView
 public:
     Game(QWidget *parent=0);
     ~Game();
+
+    int highScore=0, currentScore=0;
+    QGraphicsTextItem * scoreText;
 
     QGraphicsScene * scene;
     int screenHeight, screenWidth;
@@ -44,8 +48,11 @@ public:
     QPushButton * exitB;
 
     QGraphicsPixmapItem * deathMenu;
+    QGraphicsTextItem * finalScore;
     QGraphicsProxyWidget * ohNoProxy;
     QPushButton * ohNoB;
+
+
 
     QVector<TerrainData> terrains;
     void readTerrainFile();
@@ -73,6 +80,7 @@ public slots:
     void pauseGame();
     void resumeGame();
     void died();
+    void increaseScore(int amount);
 };
 
 #endif // GAME_H

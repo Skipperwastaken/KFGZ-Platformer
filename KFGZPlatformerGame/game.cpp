@@ -90,6 +90,9 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     deathMenu->setZValue(10);
     deathMenu->hide();
 
+    connect(player, &Character::died,
+            this, &Game::died);
+
     ohNoB = new QPushButton(QString("Oh no!"));
     ohNoProxy = new QGraphicsProxyWidget(deathMenu);
     ohNoProxy->setWidget(ohNoB);
@@ -97,6 +100,13 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     ohNoB->hide();
     connect(ohNoB, &QAbstractButton::clicked,
             this, &Game::exitGame);
+
+    finalScore=new QGraphicsTextItem;
+    scene->addItem(finalScore);
+    finalScore->setPos(screenWidth/2-130, screenHeight/2-100);
+    finalScore->setFont(QFont("times",32));
+    finalScore->setZValue(1111);
+    finalScore->hide();
 
     //ha minden elokeszulet kesz, megnyitjuk az ablakot, androidon nincs tálca, úgyhogy windowson is fullscreennel kell tesztelni
     showFullScreen();
@@ -109,6 +119,17 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     //screenUpdateT->start(1000/fps);
     //connect(screenUpdateT, &QTimer::timeout,
     //        this, &Game::updateScreen);
+
+    scoreText=new QGraphicsTextItem;
+    scene->addItem(scoreText);
+    scoreText->setPos(screenWidth-140, 10);
+    scoreText->setFont(QFont("times",16));
+    scoreText->setZValue(1111);
+    scoreText->setPlainText(QString("Distance: ") + QString::number(highScore));
+    connect(player, &Character::moved,
+            this, &Game::increaseScore);
+
+
 }
 
 //jatekos iranyitasa, lehetne a character classban is, de ott nehezebb bug mentesre megcsinalni
@@ -178,7 +199,13 @@ void Game::checkForAttact()
         {
             if(!chunk.at(j).enemies.at(i)->dead)
             {
-                if(std::abs(player->pos().y() - chunk[j].enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk[j].enemies.at(i)->pos().x()) < 700)
+                if(!chunk.at(j).enemies.at(i)->killConnect)
+                {
+                    chunk[j].enemies[i]->killConnect=true;
+                    connect(chunk[j].enemies[i], &Enemy::hit,
+                            this, &Game::died);
+                }
+                if(std::abs(player->pos().y() - chunk.at(j).enemies.at(i)->pos().y()) < 200 && std::abs(player->pos().x()-chunk.at(j).enemies.at(i)->pos().x()) < 700)
                 {
                     QList<QGraphicsItem*> enemyCollisions = chunk.at(j).enemies.at(i)->model->collidingItems();
                     for (int w = 0; w < enemyCollisions.size(); w++)
@@ -342,9 +369,30 @@ void Game::resumeGame()
 
 void Game::died()
 {
+    pauseGame();
     deathMenu->show();
     ohNoB->show();
     player->moveTimer->stop();
     mapSlideTimer->stop();
     checkForAttactT->stop();
+    finalScore->setPlainText(QString("Distance: ") + QString::number(highScore/100));
+    finalScore->show();
+}
+
+void Game::increaseScore(int amount)
+{
+    qDebug() << "amount";
+    currentScore+=amount;
+    if(currentScore>highScore)
+    {
+        highScore=currentScore;
+        scoreText->setPlainText(QString("Distance: ") + QString::number(highScore/100));
+    }
+    //TODO: delete these
+    if(highScore/100>=50)
+    {
+        deathMenu->setPixmap(QPixmap(":/images/images/victoryPopup.png").scaled(QSize(screenHeight*4/5, screenHeight*4/5)));
+        ohNoB->setText("Kérem a csokimat!");
+        died();
+    }
 }

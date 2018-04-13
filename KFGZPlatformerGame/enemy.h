@@ -19,7 +19,7 @@ public:
     QTimer *prepAttackT, *attackT, *attackHitboxT, *attackCD;
     int prepTime;
     void setNormalModel(QString mdl);
-    bool dead=false;
+    bool dead=false, killConnect=false;
 signals:
     void hit();
 public slots:

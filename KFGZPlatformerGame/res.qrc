@@ -12,6 +12,7 @@
         <file>images/enemies/fireWizard/fireWizardPrep.png</file>
         <file>images/enemies/spearMan/spearmanDead.png</file>
         <file>images/deathPopup.png</file>
+        <file>images/victoryPopup.png</file>
     </qresource>
     <qresource prefix="/data">
         <file>data/terrains.txt</file>

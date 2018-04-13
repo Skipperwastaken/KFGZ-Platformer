@@ -40,6 +40,8 @@ Character::~Character()
 
 void Character::move()
 {
+    if(pos().y()>1500)
+        emit died();
     //gravitacio
     yVelocity -= (jumping && yVelocity>0 ? 0.08 : 0.14);
 
@@ -136,9 +138,17 @@ void Character::move()
     //oldalra mozgas
     //ha levegoben van vagy csuszik, akkor lassabban mozog oldalra, mint ha futna a foldon
     if(goingRight && !wallRight)
+    {
         setPos(x()+(yVelocity == 0 && !slidingTimer->isActive() ? 4 : 2.5), y());
+        emit moved(yVelocity == 0 && !slidingTimer->isActive() ? 4 : 2.5);
+        qDebug() << "goingright";
+    }
     if(goingLeft && !wallLeft)
+    {
         setPos(x()-(!slidingTimer->isActive()  ? 4 : 2.5), y());
+        emit moved(!slidingTimer->isActive()  ? -4 : -2.5);
+    }
+    emit moved(3);
     //ha erintkezik a folddel, akkor a yvelocity 0, ha esik, akkor negativ, ha ugrik akkr pozitiv
     setPos(x(), y()-yVelocity);
 }

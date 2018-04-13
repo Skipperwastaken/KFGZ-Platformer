@@ -70,8 +70,6 @@ void MapChunk::createChunk()
         }
     }
 
-    //enemies.append(new FireWizard);
-
     //terrainnak megadja a helyet es hozzaadja a scenehez
     //qDebug() << "adding terrain to scene";
     //qDebug() << "Number of terrains: " << terrains.length();
